@@ -2,11 +2,11 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build a local Codex plugin named `resume-intelligence` with one core skill that creates evidence-backed resumes, job-specific resumes, cover letters, and LinkedIn recommendations from LinkedIn, local documents, Confluence, Jira, public GitHub, and GitHub Enterprise sources.
+**Goal:** Build a local Codex plugin named `resume-intelligence` with one core skill that creates evidence-backed resumes, professional visual resume templates with optional profile-picture support, job-specific resumes, cover letters, and LinkedIn recommendations from LinkedIn, local documents, Confluence, Jira, public GitHub, and GitHub Enterprise sources.
 
-**Architecture:** The plugin is documentation- and workflow-first in v1. It uses a validated plugin manifest, one focused skill, three reference files for detailed workflow guidance, Markdown templates for generated artifacts, and no custom network client or credential storage. Existing Codex tools/connectors remain the integration boundary for GitHub, Confluence, Jira, web research, and local file analysis.
+**Architecture:** The plugin is documentation- and workflow-first in v1. It uses a validated plugin manifest, one focused skill, three reference files for detailed workflow guidance, Markdown templates for generated artifacts, one portable HTML/CSS designed resume template, and no custom network client or credential storage. Existing Codex tools/connectors remain the integration boundary for GitHub, Confluence, Jira, web research, and local file analysis.
 
-**Tech Stack:** Codex plugin manifest JSON, Codex skill Markdown frontmatter, `agents/openai.yaml`, Markdown reference files, Markdown output templates, official plugin and skill validator scripts.
+**Tech Stack:** Codex plugin manifest JSON, Codex skill Markdown frontmatter, `agents/openai.yaml`, Markdown reference files, Markdown output templates, portable HTML/CSS template, official plugin and skill validator scripts.
 
 ---
 
@@ -21,6 +21,7 @@
 - Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/evidence.md`: evidence log template.
 - Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/draft-resume.md`: first-draft resume template.
 - Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/professional-resume.md`: polished resume template.
+- Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/designed-resume.html`: professional visual resume template with optional profile-picture slot and print styling.
 - Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/targeted-resume.md`: job-specific resume template.
 - Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/cover-letter.md`: cover letter template.
 - Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/linkedin-recommendations.md`: LinkedIn improvement template.
@@ -70,15 +71,15 @@ Edit `plugins/resume-intelligence/.codex-plugin/plugin.json` to exactly:
 {
   "name": "resume-intelligence",
   "version": "0.1.0",
-  "description": "Build evidence-backed resumes, cover letters, and LinkedIn recommendations from approved career sources.",
+  "description": "Build evidence-backed resumes, designed resume templates, cover letters, and LinkedIn recommendations from approved career sources.",
   "author": {
     "name": "Local developer"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "Resume Intelligence",
-    "shortDescription": "Create resumes from verified career evidence.",
-    "longDescription": "Resume Intelligence guides Codex through approved LinkedIn, local document, Confluence, Jira, public GitHub, and GitHub Enterprise sources to produce evidence-backed resume drafts, professional resumes, job-specific resumes, cover letters, and LinkedIn profile recommendations with explicit provenance and confidentiality handling.",
+    "shortDescription": "Create polished resumes from verified evidence.",
+    "longDescription": "Resume Intelligence guides Codex through approved LinkedIn, local document, Confluence, Jira, public GitHub, and GitHub Enterprise sources to produce evidence-backed resume drafts, professional resumes, professional visual resume templates with optional profile-picture support, job-specific resumes, cover letters, and LinkedIn profile recommendations with explicit provenance and confidentiality handling.",
     "developerName": "Local developer",
     "category": "Productivity",
     "capabilities": [
@@ -135,18 +136,19 @@ Create `plugins/resume-intelligence/skills/resume-intelligence/SKILL.md` with:
 ```markdown
 ---
 name: resume-intelligence
-description: Use when the user wants to build or tailor a resume, cover letter, LinkedIn profile recommendations, or career evidence summary from LinkedIn profile content, local project documents, Confluence, Jira, public GitHub, GitHub Enterprise, open-source contributions, or job postings. Trigger for requests involving resume drafting, resume tailoring, cover letters, LinkedIn optimization, project evidence extraction, career impact analysis, or multi-source professional profile synthesis.
+description: Use when the user wants to build or tailor a resume, professional visual resume template, cover letter, LinkedIn profile recommendations, or career evidence summary from LinkedIn profile content, local project documents, Confluence, Jira, public GitHub, GitHub Enterprise, open-source contributions, profile pictures, or job postings. Trigger for requests involving resume drafting, resume tailoring, designed resumes, professional templates, cover letters, LinkedIn optimization, project evidence extraction, career impact analysis, or multi-source professional profile synthesis.
 ---
 
 # Resume Intelligence
 
-Use this skill to convert approved career evidence into a professional resume system: an evidence log, draft resume, polished resume, optional targeted resume, optional cover letter, job/market fit analysis, and LinkedIn profile recommendations.
+Use this skill to convert approved career evidence into a professional resume system: an evidence log, draft resume, polished resume, optional designed resume, optional targeted resume, optional cover letter, job/market fit analysis, and LinkedIn profile recommendations.
 
 ## Guardrails
 
 - Do not scrape LinkedIn behind login or bypass platform controls.
 - Use LinkedIn profile exports, pasted profile content, public profile content, or user notes.
 - Do not store credentials in plugin files, generated outputs, templates, or evidence logs.
+- Do not upload profile pictures, private documents, or resume content to Canva, Figma, or another third-party design service automatically.
 - Treat GitHub Enterprise, private Confluence, private Jira, and private repositories as confidential by default.
 - Preserve source provenance for every claim.
 - Mark uncertain claims for user confirmation.
@@ -181,6 +183,7 @@ Collect only the inputs needed for that goal:
 - Public GitHub account, repositories, PRs, issues, and date ranges.
 - GitHub Enterprise host, username, organization, repositories, credential context, contribution type, date range, and disclosure level.
 - Job posting text, URL content, or pasted listing.
+- Optional local profile-picture path or attachment for designed resume templates.
 - Confidentiality and redaction preferences.
 
 ## Source Collection
@@ -194,6 +197,7 @@ If connector tools are available, use them after the user approves the query or 
 - Jira: user-approved JQL searches and selected fields.
 - Local files: inspect text-oriented documents under the approved folder.
 - Web research: use current public sources for job postings and public market research when the user asks for optimization or targeting.
+- Profile picture: use only a user-provided local image path or attachment, and include it only in designed artifacts when requested.
 
 If a connector is unavailable or credentials are missing, ask for pasted exports, local files, or manual summaries and continue with other approved sources.
 
@@ -229,6 +233,7 @@ Use these filenames when the corresponding output is requested:
 - `evidence.md`
 - `draft-resume.md`
 - `professional-resume.md`
+- `designed-resume.html`
 - `targeted-resume.md`
 - `cover-letter.md`
 - `linkedin-recommendations.md`
@@ -242,8 +247,9 @@ Use the templates in `assets/templates/` as structure, not as rigid wording.
 2. Create `draft-resume.md` from high- and medium-confidence evidence.
 3. Ask the user to confirm low-confidence claims and sensitive details before final wording.
 4. Create `professional-resume.md` using sanitized, evidence-backed bullets.
-5. If a job posting is provided, create `gap-analysis.md`, `targeted-resume.md`, and `cover-letter.md`.
-6. Create `linkedin-recommendations.md` with editable profile updates.
+5. If a professional template, design export, or profile picture is requested, create `designed-resume.html` from the sanitized resume content.
+6. If a job posting is provided, create `gap-analysis.md`, `targeted-resume.md`, and `cover-letter.md`.
+7. Create `linkedin-recommendations.md` with editable profile updates.
 
 ## Final Response
 
@@ -263,9 +269,9 @@ Create `plugins/resume-intelligence/skills/resume-intelligence/agents/openai.yam
 ```yaml
 interface:
   display_name: "Resume Intelligence"
-  short_description: "Build resumes from verified career evidence"
+  short_description: "Build polished resumes from verified evidence"
   brand_color: "#2563EB"
-  default_prompt: "Use $resume-intelligence to build a resume from my LinkedIn, GitHub, Jira, Confluence, and project docs."
+  default_prompt: "Use $resume-intelligence to build a professional resume template from my approved career evidence."
 
 policy:
   allow_implicit_invocation: true
@@ -317,7 +323,7 @@ Every evidence source is represented as a source context. Source contexts keep c
 Use this structure in the evidence log:
 
 - `id`: stable short identifier such as `github-public-rajain5` or `github-enterprise-webex`.
-- `type`: `linkedin-profile`, `local-docs`, `confluence`, `jira`, `github-public`, `github-enterprise`, `job-posting`, or `peer-market-research`.
+- `type`: `linkedin-profile`, `local-docs`, `confluence`, `jira`, `github-public`, `github-enterprise`, `job-posting`, `peer-market-research`, or `profile-picture`.
 - `display_name`: user-facing source label.
 - `host`: source host or workspace, such as `github.com`, a GitHub Enterprise hostname, Jira site, Confluence site, or local folder path.
 - `identity`: username, email, display name, or user-provided identity used for attribution.
@@ -400,6 +406,17 @@ Record:
 Use `job-posting` for a specific job listing. Use `peer-market-research` for public role and market calibration.
 
 Research may inform keyword coverage, role framing, and gap analysis. It must not create unsupported experience claims.
+
+## Profile Picture
+
+Use `profile-picture` only for a user-provided local image path or attachment. Do not search for or scrape profile pictures.
+
+Record:
+
+- Local image path or attachment label.
+- Whether the user requested use in the designed resume.
+- Whether the image should be embedded, linked by local path, or omitted from shared artifacts.
+- Any user-provided cropping or style preference.
 ```
 
 - [ ] **Step 2: Write the resume workflow reference**
@@ -468,6 +485,21 @@ For each important job requirement, classify:
 
 Use this classification in `gap-analysis.md`, then produce `targeted-resume.md` and `cover-letter.md`.
 
+## Designed Resume
+
+Create `designed-resume.html` when the user requests a professional template, visual resume, Canva/Figma-ready layout, printable design, or profile-picture support.
+
+Use the sanitized content from `professional-resume.md`. Keep the Markdown resume as the ATS-friendly source of truth.
+
+The designed resume should:
+
+- Use a restrained professional layout.
+- Include a profile-picture slot only when the user provides or requests one.
+- Use local image paths or clear replacement comments instead of fetching images.
+- Include print CSS for browser-to-PDF export.
+- Include a short comment explaining that the HTML can be copied into Canva, Figma, Google Docs, Word, or another design tool.
+- Avoid decorative elements that make content hard to scan.
+
 ## LinkedIn Recommendations
 
 Recommend editable changes for:
@@ -497,6 +529,7 @@ Create `plugins/resume-intelligence/skills/resume-intelligence/references/privac
 - Jira and Confluence evidence is summarized and anonymized by default.
 - LinkedIn content is used only when user-provided or publicly accessible without bypassing access controls.
 - Credentials, tokens, cookies, private URLs, and secrets are never copied into outputs.
+- Profile pictures are used only when user-provided and are never uploaded to external design services automatically.
 
 ## Sanitization Rules
 
@@ -508,6 +541,7 @@ Before final resume, cover letter, or LinkedIn wording:
 - Replace Confluence page titles with project themes unless approved.
 - Replace private URLs with source-context references in the evidence log only.
 - Round or generalize sensitive metrics when the user asks for confidentiality.
+- Use local image paths or user-approved embedded image references for designed resumes; omit images from shared artifacts when the user has not approved image sharing.
 
 ## Claim Confidence
 
@@ -530,6 +564,7 @@ Pause for user review before final wording when outputs include:
 - Jira issue keys.
 - Confluence page titles.
 - Security-sensitive architecture details.
+- Profile pictures or image metadata in shared artifacts.
 - Any low-confidence claim.
 ```
 
@@ -550,6 +585,7 @@ Expected: commit succeeds with three reference files.
 - Create: `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/evidence.md`
 - Create: `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/draft-resume.md`
 - Create: `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/professional-resume.md`
+- Create: `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/designed-resume.html`
 - Create: `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/targeted-resume.md`
 - Create: `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/cover-letter.md`
 - Create: `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/linkedin-recommendations.md`
@@ -698,7 +734,216 @@ Languages | Frameworks | Cloud | Data | DevOps | Architecture
 - 
 ```
 
-- [ ] **Step 4: Create `targeted-resume.md` template**
+- [ ] **Step 4: Create `designed-resume.html` template**
+
+Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/designed-resume.html` with:
+
+```html
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Designed Resume</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5d667a;
+      --line: #d9dee8;
+      --accent: #2563eb;
+      --paper: #ffffff;
+      --soft: #f4f7fb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #e9edf4;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.45;
+    }
+
+    .resume {
+      width: min(100%, 8.5in);
+      min-height: 11in;
+      margin: 0 auto;
+      background: var(--paper);
+      display: grid;
+      grid-template-columns: 2.25in 1fr;
+    }
+
+    .sidebar {
+      background: var(--soft);
+      padding: 0.42in 0.32in;
+      border-right: 1px solid var(--line);
+    }
+
+    .main {
+      padding: 0.42in 0.45in;
+    }
+
+    .photo {
+      width: 1.35in;
+      height: 1.35in;
+      border-radius: 999px;
+      border: 3px solid #ffffff;
+      outline: 1px solid var(--line);
+      object-fit: cover;
+      display: block;
+      margin-bottom: 0.22in;
+      background: #dfe5ee;
+    }
+
+    .photo-placeholder {
+      width: 1.35in;
+      height: 1.35in;
+      border-radius: 999px;
+      border: 1px dashed var(--line);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      font-size: 10px;
+      margin-bottom: 0.22in;
+      text-align: center;
+      padding: 0.1in;
+    }
+
+    h1 {
+      font-size: 30px;
+      line-height: 1.05;
+      margin: 0 0 0.08in;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      color: var(--accent);
+      font-size: 13px;
+      margin: 0.24in 0 0.08in;
+      text-transform: uppercase;
+      letter-spacing: 0;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 0.04in;
+    }
+
+    h3 {
+      font-size: 14px;
+      margin: 0.16in 0 0.03in;
+    }
+
+    p {
+      margin: 0 0 0.08in;
+    }
+
+    ul {
+      margin: 0.05in 0 0.12in;
+      padding-left: 0.18in;
+    }
+
+    li {
+      margin-bottom: 0.05in;
+    }
+
+    .role-meta,
+    .contact,
+    .small {
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.05in;
+      margin-top: 0.06in;
+    }
+
+    .tag {
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 0.03in 0.06in;
+      background: #ffffff;
+      font-size: 10.5px;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .resume {
+        width: 8.5in;
+        margin: 0;
+        box-shadow: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Copy this HTML into a browser for PDF export, or use the structure as a source for Canva, Figma, Google Docs, or Word. Replace PROFILE_PHOTO_PATH only when the user provides a profile picture and approves using it. -->
+  <article class="resume">
+    <aside class="sidebar">
+      <div class="photo-placeholder">Optional profile photo</div>
+      <!-- <img class="photo" src="PROFILE_PHOTO_PATH" alt="Profile photo"> -->
+      <section>
+        <h2>Contact</h2>
+        <p class="contact">Name<br>Email<br>Phone<br>Location<br>LinkedIn<br>GitHub</p>
+      </section>
+      <section>
+        <h2>Core Skills</h2>
+        <div class="tag-list">
+          <span class="tag">Skill</span>
+          <span class="tag">Skill</span>
+          <span class="tag">Skill</span>
+        </div>
+      </section>
+      <section>
+        <h2>Education</h2>
+        <p class="small">Degree, School</p>
+      </section>
+    </aside>
+    <main class="main">
+      <header>
+        <h1>Candidate Name</h1>
+        <p class="role-meta">Target Role | Domain | Years of Experience</p>
+      </header>
+      <section>
+        <h2>Summary</h2>
+        <p>Evidence-backed professional summary.</p>
+      </section>
+      <section>
+        <h2>Experience</h2>
+        <h3>Company | Title</h3>
+        <p class="role-meta">Dates</p>
+        <ul>
+          <li>Polished, sanitized impact bullet.</li>
+          <li>Polished, sanitized impact bullet.</li>
+          <li>Polished, sanitized impact bullet.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Selected Projects</h2>
+        <h3>Project Name</h3>
+        <ul>
+          <li>Evidence-backed project bullet.</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Open Source</h2>
+        <ul>
+          <li>Public contribution bullet.</li>
+        </ul>
+      </section>
+    </main>
+  </article>
+</body>
+</html>
+```
+
+- [ ] **Step 5: Create `targeted-resume.md` template**
 
 Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/targeted-resume.md` with:
 
@@ -739,7 +984,7 @@ Summary aligned to the posting and supported by evidence.
 - 
 ```
 
-- [ ] **Step 5: Create `cover-letter.md` template**
+- [ ] **Step 6: Create `cover-letter.md` template**
 
 Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/cover-letter.md` with:
 
@@ -765,7 +1010,7 @@ Name
 - 
 ```
 
-- [ ] **Step 6: Create `linkedin-recommendations.md` template**
+- [ ] **Step 7: Create `linkedin-recommendations.md` template**
 
 Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/linkedin-recommendations.md` with:
 
@@ -803,7 +1048,7 @@ Editable LinkedIn About section.
 - 
 ```
 
-- [ ] **Step 7: Create `gap-analysis.md` template**
+- [ ] **Step 8: Create `gap-analysis.md` template**
 
 Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/gap-analysis.md` with:
 
@@ -841,16 +1086,16 @@ Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/
 - 
 ```
 
-- [ ] **Step 8: Commit templates**
+- [ ] **Step 9: Commit templates**
 
 Run:
 
 ```bash
-git add plugins/resume-intelligence/skills/resume-intelligence/assets/templates/evidence.md plugins/resume-intelligence/skills/resume-intelligence/assets/templates/draft-resume.md plugins/resume-intelligence/skills/resume-intelligence/assets/templates/professional-resume.md plugins/resume-intelligence/skills/resume-intelligence/assets/templates/targeted-resume.md plugins/resume-intelligence/skills/resume-intelligence/assets/templates/cover-letter.md plugins/resume-intelligence/skills/resume-intelligence/assets/templates/linkedin-recommendations.md plugins/resume-intelligence/skills/resume-intelligence/assets/templates/gap-analysis.md
+git add plugins/resume-intelligence/skills/resume-intelligence/assets/templates/evidence.md plugins/resume-intelligence/skills/resume-intelligence/assets/templates/draft-resume.md plugins/resume-intelligence/skills/resume-intelligence/assets/templates/professional-resume.md plugins/resume-intelligence/skills/resume-intelligence/assets/templates/designed-resume.html plugins/resume-intelligence/skills/resume-intelligence/assets/templates/targeted-resume.md plugins/resume-intelligence/skills/resume-intelligence/assets/templates/cover-letter.md plugins/resume-intelligence/skills/resume-intelligence/assets/templates/linkedin-recommendations.md plugins/resume-intelligence/skills/resume-intelligence/assets/templates/gap-analysis.md
 git commit -m "Add resume intelligence output templates"
 ```
 
-Expected: commit succeeds with seven template files.
+Expected: commit succeeds with eight template files.
 
 ## Task 5: Add Dry-Run Validation Scenarios
 
@@ -943,6 +1188,23 @@ Expected outputs:
 - `targeted-resume.md` reorders skills and bullets to match the posting.
 - `cover-letter.md` uses only supported achievements.
 - Missing requirements are addressed honestly.
+
+## Scenario 5: Designed Resume With Optional Profile Picture
+
+Input:
+
+- Goal: professional designed resume.
+- Years of experience: 11.
+- Target role: senior engineering leader.
+- Source contexts: `linkedin-profile`, `local-docs`, and `profile-picture`.
+- Profile-picture evidence: user-provided local image path with permission to include it in visual resume output.
+
+Expected outputs:
+
+- `professional-resume.md` remains ATS-friendly and text-first.
+- `designed-resume.html` includes sanitized resume content and a profile-picture slot.
+- Profile picture is referenced only through the user-approved local path or left as a replacement placeholder.
+- Output guidance explains browser-to-PDF export and copy/import into Canva, Figma, Google Docs, or Word.
 ```
 
 - [ ] **Step 3: Commit validation scenarios**
@@ -964,6 +1226,7 @@ Expected: commit succeeds with the validation scenario file.
 - Verify: `plugins/resume-intelligence/skills/resume-intelligence/agents/openai.yaml`
 - Verify: `plugins/resume-intelligence/skills/resume-intelligence/references/*.md`
 - Verify: `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/*.md`
+- Verify: `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/*.html`
 - Verify: `plugins/resume-intelligence/validation/dry-run-scenarios.md`
 
 - [ ] **Step 1: Run official plugin validation**
@@ -1020,6 +1283,7 @@ plugins/resume-intelligence/skills/resume-intelligence/references/privacy-saniti
 plugins/resume-intelligence/skills/resume-intelligence/assets/templates/evidence.md
 plugins/resume-intelligence/skills/resume-intelligence/assets/templates/draft-resume.md
 plugins/resume-intelligence/skills/resume-intelligence/assets/templates/professional-resume.md
+plugins/resume-intelligence/skills/resume-intelligence/assets/templates/designed-resume.html
 plugins/resume-intelligence/skills/resume-intelligence/assets/templates/targeted-resume.md
 plugins/resume-intelligence/skills/resume-intelligence/assets/templates/cover-letter.md
 plugins/resume-intelligence/skills/resume-intelligence/assets/templates/linkedin-recommendations.md
@@ -1055,7 +1319,7 @@ Spec coverage:
 - Multi-source and multi-GitHub model: Task 2 and Task 3.
 - Local docs, Confluence, Jira, GitHub, LinkedIn, job posting, and market research workflow: Task 2 and Task 3.
 - Privacy, credential, and disclosure boundaries: Task 2 and Task 3.
-- Markdown outputs: Task 4.
+- Markdown outputs and professional designed HTML template with optional profile-picture support: Task 4.
 - Dry-run validation scenarios: Task 5.
 - Official validation: Task 6.
 - Marketplace install excluded from v1: covered by absence of marketplace task and plugin source staying in repo.
@@ -1067,4 +1331,4 @@ Placeholder scan:
 Type and naming consistency:
 
 - Plugin name, skill folder, skill frontmatter name, and metadata prompt all use `resume-intelligence`.
-- Source context names match the design spec: `linkedin-profile`, `local-docs`, `confluence`, `jira`, `github-enterprise`, `github-public`, `job-posting`, and `peer-market-research`.
+- Source context names match the design spec: `linkedin-profile`, `local-docs`, `confluence`, `jira`, `github-enterprise`, `github-public`, `job-posting`, `peer-market-research`, and `profile-picture`.

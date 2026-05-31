@@ -4,7 +4,7 @@ Date: 2026-05-30
 
 ## Goal
 
-Build a Codex/Claude plugin named `resume-intelligence` with one core skill that helps a user turn verified career evidence into a professional resume, optional job-specific resume and cover letter, and LinkedIn profile improvement recommendations.
+Build a Codex/Claude plugin named `resume-intelligence` with one core skill that helps a user turn verified career evidence into a professional resume, optional professional visual resume template, optional job-specific resume and cover letter, and LinkedIn profile improvement recommendations.
 
 The plugin should support users whose work evidence is spread across LinkedIn, local documents, Confluence, Jira, GitHub Enterprise, and public GitHub. It must handle enterprise and open-source contributions as separate source contexts because they may use different hosts, credentials, access rules, and disclosure constraints.
 
@@ -15,6 +15,7 @@ The plugin should support users whose work evidence is spread across LinkedIn, l
 - Do not publish confidential company, customer, repository, Jira, or Confluence details without an explicit user-approved sanitization step.
 - Do not build a custom OAuth or account-management service in the first version.
 - Do not guarantee truth of extracted achievements; the workflow must mark uncertain claims for user review.
+- Do not upload profile pictures, private documents, or resume content to Canva, Figma, or another third-party design service automatically.
 
 ## Recommended Shape
 
@@ -41,6 +42,7 @@ The workflow treats every evidence source as a named source context:
 - `github-public`: public GitHub or GitHub Cloud activity, including repositories, PRs, issues, and open-source contributions.
 - `job-posting`: optional pasted job listing, URL content, or downloaded posting text.
 - `peer-market-research`: public role/profile/job evidence used to calibrate keywords, seniority, and expectations.
+- `profile-picture`: optional user-provided local image path or attachment used only when the user requests a visual resume template.
 
 Each source context should record:
 
@@ -85,6 +87,7 @@ Collect the user's profile inputs and permissions:
 - Optional Jira JQL queries.
 - GitHub source contexts, including enterprise and public hosts.
 - Optional job posting.
+- Optional profile picture for designed resume templates.
 - Confidentiality and redaction preferences.
 
 ### 2. Evidence Collection
@@ -153,7 +156,19 @@ Produce a polished resume that is:
 - Tailored to target role, seniority, and technology stack.
 - Explicit about public open-source contributions when useful.
 - Sanitized for confidential enterprise work.
-- Available in Markdown first, with future support for DOCX/PDF templates.
+- Available as Markdown plus a professional, print-friendly designed template.
+
+### 6a. Professional Template and Profile Picture
+
+When the user requests a professional template or provides a profile picture, create a designed resume artifact that can be exported or copied into tools such as Canva, Figma, Google Docs, Word, or another design editor.
+
+The designed template should:
+
+- Keep the resume content ATS-friendly in the Markdown version.
+- Provide a visually polished HTML/CSS layout for human review and PDF printing.
+- Include an optional profile-picture slot only when the user provides an image or asks for one.
+- Avoid embedding private image metadata into shared artifacts when possible.
+- Include concise export guidance instead of uploading content to external design services automatically.
 
 ### 7. Job-Specific Resume and Cover Letter
 
@@ -187,6 +202,7 @@ The plugin should produce a structured output folder for each run:
 - `evidence.md`: source summary, claims, confidence, and redaction notes.
 - `draft-resume.md`: initial resume based on collected evidence.
 - `professional-resume.md`: polished general resume.
+- `designed-resume.html`: optional professional visual resume template with optional profile-picture support.
 - `targeted-resume.md`: job-specific resume when a posting is provided.
 - `cover-letter.md`: job-specific cover letter when a posting is provided.
 - `linkedin-recommendations.md`: suggested LinkedIn edits.
@@ -220,6 +236,7 @@ Initial plugin structure:
 - `skills/resume-intelligence/references/resume-workflow.md`
 - `skills/resume-intelligence/references/privacy-sanitization.md`
 - `skills/resume-intelligence/assets/templates/`
+- `skills/resume-intelligence/assets/templates/designed-resume.html`
 
 Scripts can be added later for deterministic document parsing, evidence normalization, and output rendering.
 
@@ -234,11 +251,13 @@ The first implementation should be validated by:
   - public GitHub only,
   - GitHub Enterprise plus public GitHub,
   - Jira and Confluence with local documents,
+  - professional designed resume with optional profile picture,
   - job-posting-specific resume and cover letter.
 
 ## Implementation Defaults
 
 - Place the plugin source in this repository under `plugins/resume-intelligence` so it can be versioned with the project and edited without writing outside the workspace.
-- Generate Markdown outputs in v1. DOCX and PDF templates can be added after the skill workflow is stable.
+- Generate Markdown outputs and one professional HTML/CSS designed resume template in v1. DOCX and native PDF generation can be added after the skill workflow is stable.
 - In v1, the skill should instruct Codex to analyze text-oriented local documents using available local tools. Deterministic parsing scripts for PDF, DOCX, and evidence normalization can be added after the core skill is usable.
 - Do not create or update a personal marketplace entry unless the user explicitly asks to install the plugin into the Codex app.
+- Do not depend on Canva, Figma, or any external design service for v1. Provide portable HTML/CSS and copy/export guidance instead.
