@@ -4,7 +4,7 @@ Date: 2026-05-30
 
 ## Goal
 
-Build a Codex/Claude plugin named `resume-intelligence` with one core skill that helps a user turn verified career evidence into a professional resume, ATS/recruiter scorecard, optional professional visual resume template, optional job-specific resume and cover letter, and LinkedIn profile improvement recommendations.
+Build a Codex/Claude plugin named `resume-intelligence` with one core skill that helps a user turn verified career evidence into a professional resume, ATS/recruiter scorecard, optional professional visual resume template, optional job-specific resume and cover letter, LinkedIn profile improvement recommendations, job match scoring report, and interview preparation pack.
 
 The plugin should support users whose work evidence is spread across LinkedIn, local documents, Confluence, Jira, GitHub Enterprise, and public GitHub. It must handle enterprise and open-source contributions as separate source contexts because they may use different hosts, credentials, access rules, and disclosure constraints.
 
@@ -15,6 +15,7 @@ The plugin should support users whose work evidence is spread across LinkedIn, l
 - Do not publish confidential company, customer, repository, Jira, or Confluence details without an explicit user-approved sanitization step.
 - Do not build a custom OAuth or account-management service in the first version.
 - Do not guarantee truth of extracted achievements; the workflow must mark uncertain claims for user review.
+- Do not silently skip approved folders or sources; the workflow must produce an auditable source inventory and tool usage log.
 - Do not upload profile pictures, private documents, or resume content to Canva, Figma, or another third-party design service automatically.
 
 ## Recommended Shape
@@ -25,6 +26,7 @@ The plugin gives us a durable container for:
 
 - A core `resume-intelligence` skill.
 - Resume and cover-letter templates.
+- Source inventory, tool usage, job match, and interview preparation templates.
 - Reference guidance for source handling, evidence scoring, and sanitization.
 - Future deterministic scripts for parsing local documents and normalizing evidence.
 
@@ -107,9 +109,13 @@ For each approved source, gather evidence into a structured career evidence set:
 
 The workflow should prefer direct evidence from user-owned documents and approved connectors over inferred claims.
 
+Before evidence extraction, create `source-inventory.md` and `tool-usage-log.md`. These files must show approved sources, recursive local folder coverage, connector or search attempts, unavailable tools, and skipped files with reasons.
+
 ### 3. Local Document Analysis
 
 Analyze files under the selected folder to find project information. The first version should support text-oriented formats directly and note unsupported formats for later scripts.
+
+The workflow must recursively enumerate the full approved local folder tree, preferring `rg --files` and using `find` only as a fallback. It must not stop after the first subfolder.
 
 Extract:
 
@@ -157,6 +163,8 @@ Research should consider:
 - Gaps between the user's draft and market expectations.
 
 The skill should distinguish public evidence from inference and should avoid copying wording from other users' profiles.
+
+When the user asks for matched jobs, produce `job-match-report.md` with transparent scoring for role/seniority fit, technical fit, domain fit, impact and leadership fit, location/work-model fit, and gap risk. Dynamic job listings require current search or user-provided listing text.
 
 ### 6. Professional Resume
 
@@ -206,11 +214,21 @@ Provide recommended LinkedIn updates:
 
 Recommendations should be written as editable suggestions, not posted automatically.
 
+### 9. Interview Preparation
+
+When requested, generate:
+
+- `project-interview-briefs.md`: key projects with STAR stories, architecture, tradeoffs, metrics, risks, and likely follow-up questions.
+- `technical-stack-interview-guide.md`: evidence-backed technology depth, why each technology mattered, tradeoffs, alternatives, and interview Q&A.
+- `interview-prep-pack.md`: recruiter screen narrative, resume walk-through, behavioral stories, technical deep dives, system design prompts, job-specific prep, questions to ask, and study plan.
+
 ## Outputs
 
 The plugin should produce a structured output folder for each run:
 
 - `evidence.md`: source summary, claims, confidence, and redaction notes.
+- `source-inventory.md`: approved sources, recursive local file inventory, connector scopes, job search sources, and skipped-source reasons.
+- `tool-usage-log.md`: tools, connector calls, commands, searches, and manual inputs used during collection.
 - `draft-resume.md`: initial resume based on collected evidence.
 - `resume-scorecard.md`: ATS, recruiter, page-count, keyword, and claim-risk checklist.
 - `professional-resume.md`: polished general resume.
@@ -219,6 +237,10 @@ The plugin should produce a structured output folder for each run:
 - `cover-letter.md`: job-specific cover letter when a posting is provided.
 - `linkedin-recommendations.md`: suggested LinkedIn edits.
 - `gap-analysis.md`: optional market/job fit analysis.
+- `job-match-report.md`: optional live job search results and scoring.
+- `project-interview-briefs.md`: optional project deep dives for interviews.
+- `technical-stack-interview-guide.md`: optional technology interview guide.
+- `interview-prep-pack.md`: optional interview preparation plan.
 
 ## Privacy and Disclosure Rules
 
@@ -246,6 +268,7 @@ Initial plugin structure:
 - `skills/resume-intelligence/agents/openai.yaml`
 - `skills/resume-intelligence/references/source-model.md`
 - `skills/resume-intelligence/references/resume-workflow.md`
+- `skills/resume-intelligence/references/interview-job-workflow.md`
 - `skills/resume-intelligence/references/privacy-sanitization.md`
 - `skills/resume-intelligence/assets/templates/`
 - `skills/resume-intelligence/assets/templates/designed-resume.html`
@@ -263,8 +286,11 @@ The first implementation should be validated by:
   - public GitHub only,
   - GitHub Enterprise plus public GitHub,
   - Jira and Confluence with local documents,
+  - recursive local document inventory,
   - professional designed resume with optional profile picture,
-  - job-posting-specific resume and cover letter.
+  - job-posting-specific resume and cover letter,
+  - interview preparation,
+  - job search and match scoring.
 
 ## Implementation Defaults
 

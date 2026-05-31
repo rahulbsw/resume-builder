@@ -6,6 +6,7 @@
 - Role:
 - Seniority:
 - Source:
+- Job match score:
 
 ## Requirement Match
 
@@ -29,3 +30,9 @@
 ## Honest Gap Mitigations
 
 -
+
+## Interview Preparation Implications
+
+- Project stories to emphasize:
+- Technologies to refresh:
+- Behavioral examples to prepare:

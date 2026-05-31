@@ -8,6 +8,8 @@
 - Years of experience:
 - Target technologies:
 - Output files:
+- Source inventory:
+- Tool usage log:
 
 ## Source Contexts
 
@@ -17,9 +19,9 @@
 
 ## Claims
 
-| Claim | Source Context | Evidence Reference | Confidence | Disclosure | Resume Use | User Review |
-| --- | --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |  |
+| Claim | Source Context | Inventory Reference | Tool Usage Reference | Evidence Reference | Confidence | Disclosure | Resume Use | User Review |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |  |  |
 
 ## Projects
 

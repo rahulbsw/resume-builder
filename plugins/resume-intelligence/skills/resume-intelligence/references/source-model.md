@@ -7,13 +7,15 @@ Every evidence source is represented as a source context. Source contexts keep c
 Use this structure in the evidence log:
 
 - `id`: stable short identifier such as `github-public-rajain5` or `github-enterprise-webex`.
-- `type`: `linkedin-profile`, `local-docs`, `confluence`, `jira`, `github-public`, `github-enterprise`, `job-posting`, `peer-market-research`, or `profile-picture`.
+- `type`: `linkedin-profile`, `local-docs`, `confluence`, `jira`, `github-public`, `github-enterprise`, `job-posting`, `job-search-result`, `peer-market-research`, or `profile-picture`.
 - `display_name`: user-facing source label.
 - `host`: source host or workspace, such as `github.com`, a GitHub Enterprise hostname, Jira site, Confluence site, or local folder path.
 - `identity`: username, email, display name, or user-provided identity used for attribution.
 - `credential_boundary`: connector account, CLI profile, browser/session label, or other retrieval context label; never tokens, cookies, passwords, or raw credential material.
 - `access_method`: connector, CLI, local file, pasted export, public web, or manual notes.
 - `scope`: repositories, spaces, projects, folders, date ranges, keywords, issue keys, page titles, or PR numbers.
+- `inventory_reference`: row, file path, query, URL, or connector result set listed in `source-inventory.md`.
+- `tool_usage_reference`: row or command entry listed in `tool-usage-log.md`.
 - `disclosure_level`: public, internal-summary-only, confidential, excluded, or unknown.
 - `quoting_rule`: quote, summarize-only, anonymize, exclude, or ask-before-use.
 - `status`: used, skipped, unavailable, narrowed, or needs-user-input.
@@ -49,6 +51,29 @@ Record:
 - Disclosure rule for repository names, product names, customer names, and metrics.
 
 Default GitHub Enterprise evidence to `summarize-only` unless the user explicitly permits names or exact metrics.
+
+## Local Documents
+
+Use `local-docs` for user-approved folders, exported documents, architecture notes, project summaries, downloaded Confluence or Jira exports, PDFs, Word documents, Markdown, text files, logs, spreadsheets converted to text, or other local evidence.
+
+Always inventory the full approved folder tree before extraction:
+
+- Enumerate recursively with `rg --files <approved-folder>` when available.
+- Use a `find` fallback if `rg` is unavailable or unsuitable.
+- Do not stop at the first subfolder or only inspect files in the top-level directory.
+- Keep each approved root as a separate source context when roots have different confidentiality or ownership rules.
+- Record skipped files with a reason instead of omitting them.
+
+For each local file, record:
+
+- Relative path from the approved root.
+- File extension and detected content type when obvious.
+- Scan status: scanned, skipped-unsupported-format, skipped-too-large, skipped-binary, skipped-permission, duplicate, or needs-user-input.
+- Extraction method: direct read, markdown/text read, JSON/YAML parse, HTML/XML text extraction, PDF text extraction, DOCX text extraction, converted export, or manual summary.
+- Project names, dates, technologies, metrics, decisions, and user-action signals found.
+- Whether raw file names can appear in final outputs.
+
+Do not treat a missing parser as a reason to ignore the file. Record the file in `source-inventory.md`, mark the limitation, and ask for conversion or manual summary when the file looks important.
 
 ## Confluence
 
@@ -93,6 +118,8 @@ Record:
 Use `job-posting` for a specific job listing. Use `peer-market-research` for public role and market calibration.
 
 Research may inform keyword coverage, role framing, and gap analysis. It must not create unsupported experience claims.
+
+Use `job-search-result` rows in `source-inventory.md` for live job search results. Include source URL, company, role, location, remote status, posting date when available, search date, and whether the listing text was accessible. Dynamic job postings require current search or user-provided posting text; do not rely on stale memory.
 
 ## Profile Picture
 

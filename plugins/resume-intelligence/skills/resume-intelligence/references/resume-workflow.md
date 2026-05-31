@@ -1,5 +1,26 @@
 # Resume Workflow
 
+## Source Inventory and Tool Log
+
+Before writing `evidence.md`, create:
+
+- `source-inventory.md`: all approved sources, folders, files, connector scopes, web searches, job postings, and scan status.
+- `tool-usage-log.md`: the concrete tool, command, connector, browser, or manual input used for each source.
+
+For local folders, recursively enumerate the full approved root. Prefer `rg --files <folder>` and record the command. Use `find` only as a fallback. The inventory must include nested files from every subfolder, not only the first folder discovered.
+
+Classify each local file:
+
+- Scanned: evidence extracted or inspected.
+- Skipped unsupported format: file exists but no parser/tool is available.
+- Skipped too large: file needs narrowing, conversion, or user approval.
+- Skipped binary: binary file not useful for resume evidence.
+- Skipped permission: access failed.
+- Duplicate: same content or duplicate export already scanned.
+- Needs user input: likely relevant, but requires context or conversion.
+
+Do not write polished claims from sources that are not represented in the inventory and tool log.
+
 ## Evidence First
 
 Start with `evidence.md`. Do not write polished resume bullets until the evidence log has source contexts, claims, confidence, and disclosure and quoting rules.
@@ -58,6 +79,22 @@ For each important job requirement, classify:
 - Needs user input: likely experience but not supported by collected sources.
 
 Use this classification in `gap-analysis.md`, then produce `targeted-resume.md` and `cover-letter.md`.
+
+## Job Search and Match Scoring
+
+When the user asks to search for matching jobs, use current public sources or user-approved job boards available through tools. Record the search date, query, location, remote preference, years of experience filter, and source URL in `source-inventory.md` and `tool-usage-log.md`.
+
+Score each job in `job-match-report.md` using transparent criteria:
+
+- Role and seniority fit: title family, level, years of experience, leadership expectations.
+- Technical fit: required and preferred technologies supported by evidence.
+- Domain fit: platform, cloud, AI, data, security, product, enterprise, open-source, or other target domains.
+- Impact fit: scale, reliability, cost, migration, incident, adoption, or business outcomes.
+- Location and work model fit.
+- Evidence strength: direct, adjacent, weak, or unsupported.
+- Gap risk: must-have gaps, missing certifications, missing domain experience, or unclear eligibility.
+
+Use a 0-100 score or a qualitative strong/medium/low match, but show the reasoning. Do not recommend applying to a job solely because a keyword appears in the resume. When a listing is unavailable, expired, or inaccessible, mark it and do not score it as a live opportunity.
 
 ## Resume Scorecard
 
@@ -124,6 +161,45 @@ End the scorecard with:
 - Keyword coverage percentage or qualitative summary.
 - Top five fixes before applying.
 - Claims that need user confirmation.
+
+## Interview Preparation
+
+When interview preparation is requested, derive preparation content from `evidence.md`, `professional-resume.md`, `resume-scorecard.md`, job postings, and job match findings.
+
+Create `project-interview-briefs.md` for key projects. For each project include:
+
+- One-line project positioning.
+- 30-second and 90-second interview pitch.
+- STAR story: situation, task, action, result.
+- Architecture overview and major components.
+- User ownership, decisions, tradeoffs, and conflicts resolved.
+- Technologies used and why they mattered.
+- Scale, reliability, performance, security, cost, migration, or operational impact.
+- Metrics and honest metric gaps.
+- Failure modes, lessons learned, and what the user would improve.
+- Likely interviewer follow-up questions and concise answer notes.
+- Sensitive details that must be anonymized.
+
+Create `technical-stack-interview-guide.md` for important technologies. For each technology include:
+
+- Where it appears in the user's evidence.
+- Why the technology was used.
+- Core concepts the user should be able to explain.
+- Architecture role, tradeoffs, alternatives, and anti-patterns.
+- Scaling, reliability, security, observability, deployment, and debugging angles.
+- Interview questions with evidence-backed answer outlines.
+- Hands-on or system-design topics to refresh.
+
+Create `interview-prep-pack.md` as the practical study plan:
+
+- Recruiter screen narrative.
+- "Tell me about yourself" answer.
+- Behavioral stories mapped to leadership, ambiguity, conflict, failure, influence, mentoring, and delivery.
+- Technical deep dives and system design prompts.
+- Coding or troubleshooting practice areas when relevant.
+- Job-specific preparation from the target listing or job match report.
+- Questions to ask interviewers.
+- Red flags, gaps, and user follow-up questions.
 
 ## Designed Resume
 

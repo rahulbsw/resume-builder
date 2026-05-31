@@ -20,6 +20,8 @@
 
 | Check | Status | Notes | Fix |
 | --- | --- | --- | --- |
+| Source inventory created before resume drafting |  |  |  |
+| Tool usage log shows local folders and connector scopes attempted |  |  |  |
 | Standard section headings |  |  |  |
 | No profile photo in ATS version |  |  |  |
 | No complex tables or text boxes |  |  |  |
