@@ -49,7 +49,17 @@ Created plugin scaffold: plugins/resume-intelligence
 plugin manifest: plugins/resume-intelligence/.codex-plugin/plugin.json
 ```
 
-- [ ] **Step 2: Verify scaffolded files**
+- [ ] **Step 2: Create skills placeholder**
+
+Run:
+
+```bash
+touch plugins/resume-intelligence/skills/.gitkeep
+```
+
+Expected: command exits 0.
+
+- [ ] **Step 3: Verify scaffolded files**
 
 Run:
 
@@ -64,7 +74,7 @@ plugins/resume-intelligence/.codex-plugin/plugin.json
 plugins/resume-intelligence/skills/.gitkeep
 ```
 
-- [ ] **Step 3: Replace the scaffolded manifest**
+- [ ] **Step 4: Replace the scaffolded manifest**
 
 Edit `plugins/resume-intelligence/.codex-plugin/plugin.json` to exactly:
 
@@ -95,7 +105,7 @@ Edit `plugins/resume-intelligence/.codex-plugin/plugin.json` to exactly:
 }
 ```
 
-- [ ] **Step 4: Validate manifest JSON syntax**
+- [ ] **Step 5: Validate manifest JSON syntax**
 
 Run:
 
@@ -105,7 +115,7 @@ python3 -m json.tool plugins/resume-intelligence/.codex-plugin/plugin.json
 
 Expected: command exits 0 and prints formatted JSON.
 
-- [ ] **Step 5: Commit scaffold, manifest, and skills placeholder**
+- [ ] **Step 6: Commit scaffold, manifest, and skills placeholder**
 
 Run:
 
