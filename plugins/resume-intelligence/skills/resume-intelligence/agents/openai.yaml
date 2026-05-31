@@ -1,0 +1,8 @@
+interface:
+  display_name: "Resume Intelligence"
+  short_description: "Build polished resumes from verified evidence"
+  brand_color: "#2563EB"
+  default_prompt: "Use $resume-intelligence to build a professional resume template from my approved career evidence."
+
+policy:
+  allow_implicit_invocation: true
