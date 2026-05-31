@@ -17,6 +17,8 @@
       "Write",
       "Interactive"
     ],
-    "defaultPrompt": "Use Resume Intelligence to build my resume from approved career evidence."
+    "defaultPrompt": [
+      "Use Resume Intelligence to build my resume from approved career evidence."
+    ]
   }
 }

@@ -32,7 +32,7 @@
 
 **Files:**
 - Create: `plugins/resume-intelligence/.codex-plugin/plugin.json`
-- Create: `plugins/resume-intelligence/skills/`
+- Create: `plugins/resume-intelligence/skills/.gitkeep`
 
 - [ ] **Step 1: Run the official plugin scaffold**
 
@@ -61,6 +61,7 @@ Expected output includes:
 
 ```text
 plugins/resume-intelligence/.codex-plugin/plugin.json
+plugins/resume-intelligence/skills/.gitkeep
 ```
 
 - [ ] **Step 3: Replace the scaffolded manifest**
@@ -87,7 +88,9 @@ Edit `plugins/resume-intelligence/.codex-plugin/plugin.json` to exactly:
       "Write",
       "Interactive"
     ],
-    "defaultPrompt": "Use Resume Intelligence to build my resume from approved career evidence."
+    "defaultPrompt": [
+      "Use Resume Intelligence to build my resume from approved career evidence."
+    ]
   }
 }
 ```
@@ -102,16 +105,16 @@ python3 -m json.tool plugins/resume-intelligence/.codex-plugin/plugin.json
 
 Expected: command exits 0 and prints formatted JSON.
 
-- [ ] **Step 5: Commit scaffold and manifest**
+- [ ] **Step 5: Commit scaffold, manifest, and skills placeholder**
 
 Run:
 
 ```bash
-git add plugins/resume-intelligence/.codex-plugin/plugin.json
+git add plugins/resume-intelligence/.codex-plugin/plugin.json plugins/resume-intelligence/skills/.gitkeep
 git commit -m "Add resume intelligence plugin manifest"
 ```
 
-Expected: commit succeeds with one created manifest file.
+Expected: commit succeeds with the created manifest file and skills placeholder.
 
 ## Task 2: Add Core Skill Metadata and Workflow
 
