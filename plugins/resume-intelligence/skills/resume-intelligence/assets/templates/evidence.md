@@ -1,0 +1,45 @@
+# Career Evidence
+
+## Run Summary
+
+- Goal:
+- Target roles:
+- Target seniority:
+- Years of experience:
+- Target technologies:
+- Output files:
+
+## Source Contexts
+
+| ID | Type | Display Name | Host | Identity | Scope | Confidentiality | Quoting Rule | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |  |  |
+
+## Claims
+
+| Claim | Source Context | Evidence Reference | Confidence | Disclosure | Resume Use | User Review |
+| --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |
+
+## Projects
+
+### Project Name
+
+- Source contexts:
+- User role:
+- Problem:
+- Actions:
+- Technologies:
+- Impact:
+- Metrics:
+- Dates:
+- Disclosure notes:
+- Resume bullet candidates:
+
+## Sensitive Items For Review
+
+-
+
+## Low-Confidence Claims
+
+-
