@@ -5,7 +5,8 @@
 - Public GitHub evidence may be named when the repository is public and the user approves.
 - GitHub Enterprise evidence is summarized and anonymized by default.
 - Jira and Confluence evidence is summarized and anonymized by default.
-- LinkedIn content is used only when user-provided or publicly accessible without bypassing access controls.
+- LinkedIn content is used only from exports, pasted text, user notes, or user-approved manually provided public profile text.
+- Do not automate LinkedIn scraping, whether logged-in or public, and do not bypass rate limits, access controls, robots restrictions, or platform controls.
 - Credentials, tokens, cookies, private URLs, and secrets are never copied into outputs.
 - Profile pictures are used only when user-provided and are never uploaded to external design services automatically.
 

@@ -11,11 +11,14 @@ Use this structure in the evidence log:
 - `display_name`: user-facing source label.
 - `host`: source host or workspace, such as `github.com`, a GitHub Enterprise hostname, Jira site, Confluence site, or local folder path.
 - `identity`: username, email, display name, or user-provided identity used for attribution.
+- `credential_boundary`: connector account, CLI profile, browser/session label, or other retrieval context label; never tokens, cookies, passwords, or raw credential material.
 - `access_method`: connector, CLI, local file, pasted export, public web, or manual notes.
 - `scope`: repositories, spaces, projects, folders, date ranges, keywords, issue keys, page titles, or PR numbers.
-- `confidentiality`: public, internal, confidential, excluded, or unknown.
+- `disclosure_level`: public, internal-summary-only, confidential, excluded, or unknown.
 - `quoting_rule`: quote, summarize-only, anonymize, exclude, or ask-before-use.
 - `status`: used, skipped, unavailable, narrowed, or needs-user-input.
+
+Create a separate source context for each host + identity + credential boundary. Do not merge evidence across GitHub Cloud, GitHub Enterprise, or multiple accounts on the same host unless the user explicitly confirms they are the same professional identity and disclosure rules match.
 
 ## GitHub Public
 
@@ -58,7 +61,7 @@ Record:
 - Page title handling rule.
 - Space key.
 - Date range.
-- Confidentiality level.
+- Disclosure level.
 
 ## Jira
 
@@ -72,15 +75,15 @@ Record:
 - Fields retrieved.
 - Issue key handling rule.
 - Date range.
-- Confidentiality level.
+- Disclosure level.
 
 ## LinkedIn
 
-Use `linkedin-profile` for user-provided profile content, exports, notes, or public profile text. Do not automate logged-in scraping.
+Use `linkedin-profile` for exports, pasted text, user notes, or user-approved manually provided public profile text only. Do not automate LinkedIn scraping, whether logged-in or public, and do not bypass rate limits, access controls, robots restrictions, or platform controls.
 
 Record:
 
-- Source form: export, pasted text, public page, or notes.
+- Source form: export, pasted text, user notes, or user-approved manually provided public profile text.
 - Profile URL when user provides it.
 - Date collected.
 - Sections included.

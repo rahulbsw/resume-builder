@@ -2,7 +2,7 @@
 
 ## Evidence First
 
-Start with `evidence.md`. Do not write polished resume bullets until the evidence log has source contexts, claims, confidence, and disclosure rules.
+Start with `evidence.md`. Do not write polished resume bullets until the evidence log has source contexts, claims, confidence, and disclosure and quoting rules.
 
 For each claim, capture:
 
@@ -10,7 +10,7 @@ For each claim, capture:
 - Source context ID.
 - Evidence reference.
 - Confidence: high, medium, or low.
-- Disclosure level.
+- Disclosure level: public, internal-summary-only, confidential, excluded, or unknown.
 - Resume use: include, include-sanitized, needs-confirmation, or exclude.
 
 ## Bullet Quality
@@ -45,7 +45,7 @@ For a job-specific resume:
 1. Align summary to the role and seniority.
 2. Reorder skills to match the posting.
 3. Select bullets with the strongest evidence for the posting's requirements.
-4. Preserve truthfulness and confidentiality rules.
+4. Preserve truthfulness and disclosure and quoting rules.
 5. Add a gap analysis instead of hiding missing requirements.
 
 ## Job Posting Match
@@ -84,6 +84,6 @@ Recommend editable changes for:
 - Featured projects or repositories.
 - Skills ordering.
 - Open-source positioning.
-- Confidentiality-safe enterprise project wording.
+- Disclosure-safe enterprise project wording.
 
 Do not post changes automatically. Keep suggestions in `linkedin-recommendations.md`.
