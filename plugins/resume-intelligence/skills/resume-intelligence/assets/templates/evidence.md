@@ -11,9 +11,9 @@
 
 ## Source Contexts
 
-| ID | Type | Display Name | Host | Identity | Scope | Confidentiality | Quoting Rule | Status |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-|  |  |  |  |  |  |  |  |  |
+| ID | Type | Display Name | Host | Identity | Scope | Credential Boundary | Access Method | Disclosure Level | Quoting Rule | Status |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |  |  |  |  |
 
 ## Claims
 
