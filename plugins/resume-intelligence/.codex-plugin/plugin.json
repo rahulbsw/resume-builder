@@ -1,7 +1,7 @@
 {
   "name": "resume-intelligence",
-  "version": "0.1.0",
-  "description": "Build evidence-backed resumes, designed resume templates, cover letters, and LinkedIn recommendations from approved career sources.",
+  "version": "0.1.0+codex.20260531190826",
+  "description": "Build evidence-backed resumes, ATS/recruiter scorecards, designed templates, cover letters, and LinkedIn recommendations from approved career sources.",
   "author": {
     "name": "Local developer"
   },
@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "Resume Intelligence",
     "shortDescription": "Create polished resumes from verified evidence.",
-    "longDescription": "Resume Intelligence guides Codex through approved LinkedIn, local document, Confluence, Jira, public GitHub, and GitHub Enterprise sources to produce evidence-backed resume drafts, professional resumes, professional visual resume templates with optional profile-picture support, job-specific resumes, cover letters, and LinkedIn profile recommendations with explicit provenance and confidentiality handling.",
+    "longDescription": "Resume Intelligence guides Codex through approved LinkedIn, local document, Confluence, Jira, public GitHub, and GitHub Enterprise sources to produce evidence-backed resume drafts, ATS/recruiter scorecards, professional resumes, professional visual resume templates with optional profile-picture support, job-specific resumes, cover letters, and LinkedIn profile recommendations with explicit provenance and confidentiality handling.",
     "developerName": "Local developer",
     "category": "Productivity",
     "capabilities": [

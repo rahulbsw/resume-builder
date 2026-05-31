@@ -2,7 +2,7 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Build a local Codex plugin named `resume-intelligence` with one core skill that creates evidence-backed resumes, professional visual resume templates with optional profile-picture support, job-specific resumes, cover letters, and LinkedIn recommendations from LinkedIn, local documents, Confluence, Jira, public GitHub, and GitHub Enterprise sources.
+**Goal:** Build a local Codex plugin named `resume-intelligence` with one core skill that creates evidence-backed resumes, ATS/recruiter scorecards, professional visual resume templates with optional profile-picture support, job-specific resumes, cover letters, and LinkedIn recommendations from LinkedIn, local documents, Confluence, Jira, public GitHub, and GitHub Enterprise sources.
 
 **Architecture:** The plugin is documentation- and workflow-first in v1. It uses a validated plugin manifest, one focused skill, three reference files for detailed workflow guidance, Markdown templates for generated artifacts, one portable HTML/CSS designed resume template, and no custom network client or credential storage. Existing Codex tools/connectors remain the integration boundary for GitHub, Confluence, Jira, web research, and local file analysis.
 
@@ -20,6 +20,7 @@
 - Create `plugins/resume-intelligence/skills/resume-intelligence/references/privacy-sanitization.md`: confidentiality, redaction, and claim-confidence rules.
 - Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/evidence.md`: evidence log template.
 - Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/draft-resume.md`: first-draft resume template.
+- Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/resume-scorecard.md`: ATS, recruiter, page-count, keyword, and claim-risk checklist template.
 - Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/professional-resume.md`: polished resume template.
 - Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/designed-resume.html`: professional visual resume template with optional profile-picture slot and print styling.
 - Create `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/targeted-resume.md`: job-specific resume template.
@@ -597,6 +598,7 @@ Expected: commit succeeds with three reference files.
 **Files:**
 - Create: `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/evidence.md`
 - Create: `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/draft-resume.md`
+- Create: `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/resume-scorecard.md`
 - Create: `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/professional-resume.md`
 - Create: `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/designed-resume.html`
 - Create: `plugins/resume-intelligence/skills/resume-intelligence/assets/templates/targeted-resume.md`
@@ -1295,6 +1297,7 @@ plugins/resume-intelligence/skills/resume-intelligence/references/resume-workflo
 plugins/resume-intelligence/skills/resume-intelligence/references/privacy-sanitization.md
 plugins/resume-intelligence/skills/resume-intelligence/assets/templates/evidence.md
 plugins/resume-intelligence/skills/resume-intelligence/assets/templates/draft-resume.md
+plugins/resume-intelligence/skills/resume-intelligence/assets/templates/resume-scorecard.md
 plugins/resume-intelligence/skills/resume-intelligence/assets/templates/professional-resume.md
 plugins/resume-intelligence/skills/resume-intelligence/assets/templates/designed-resume.html
 plugins/resume-intelligence/skills/resume-intelligence/assets/templates/targeted-resume.md
@@ -1332,7 +1335,7 @@ Spec coverage:
 - Multi-source and multi-GitHub model: Task 2 and Task 3.
 - Local docs, Confluence, Jira, GitHub, LinkedIn, job posting, and market research workflow: Task 2 and Task 3.
 - Privacy, credential, and disclosure boundaries: Task 2 and Task 3.
-- Markdown outputs and professional designed HTML template with optional profile-picture support: Task 4.
+- Markdown outputs, resume scorecard, and professional designed HTML template with optional profile-picture support: Task 4.
 - Dry-run validation scenarios: Task 5.
 - Official validation: Task 6.
 - Marketplace install excluded from v1: covered by absence of marketplace task and plugin source staying in repo.

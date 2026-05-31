@@ -16,6 +16,7 @@ Expected outputs:
 
 - `evidence.md` includes public source context and public quoting rule.
 - `draft-resume.md` includes open-source contribution section.
+- `resume-scorecard.md` recommends one or two pages based on evidence density and flags ATS risks before final wording.
 - `professional-resume.md` uses public repository context only when evidence confirms visibility.
 
 ## Scenario 2: GitHub Enterprise Plus Public GitHub
@@ -71,6 +72,7 @@ Input:
 Expected outputs:
 
 - `gap-analysis.md` classifies requirements as strong match, partial match, gap, or needs user input.
+- `resume-scorecard.md` maps required and preferred posting keywords to evidence, gaps, or needed user input.
 - `targeted-resume.md` reorders skills and bullets to match the posting.
 - `cover-letter.md` uses only supported achievements.
 - Missing requirements are addressed honestly.

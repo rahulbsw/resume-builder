@@ -4,7 +4,7 @@ Date: 2026-05-30
 
 ## Goal
 
-Build a Codex/Claude plugin named `resume-intelligence` with one core skill that helps a user turn verified career evidence into a professional resume, optional professional visual resume template, optional job-specific resume and cover letter, and LinkedIn profile improvement recommendations.
+Build a Codex/Claude plugin named `resume-intelligence` with one core skill that helps a user turn verified career evidence into a professional resume, ATS/recruiter scorecard, optional professional visual resume template, optional job-specific resume and cover letter, and LinkedIn profile improvement recommendations.
 
 The plugin should support users whose work evidence is spread across LinkedIn, local documents, Confluence, Jira, GitHub Enterprise, and public GitHub. It must handle enterprise and open-source contributions as separate source contexts because they may use different hosts, credentials, access rules, and disclosure constraints.
 
@@ -134,6 +134,17 @@ Create an initial resume draft from the evidence set:
 
 All bullets should be traceable back to source evidence. Unverified or weakly supported claims should be marked for user confirmation.
 
+### 4a. Resume Scorecard
+
+Before final resume wording, create a scorecard that checks:
+
+- Recommended page count.
+- ATS parse safety.
+- Recruiter first-page strength.
+- Job-posting keyword coverage.
+- Unsupported or risky claims.
+- Top fixes before applying.
+
 ### 5. Market and Peer Research
 
 Use current public research only when the user asks for resume optimization or job targeting.
@@ -201,6 +212,7 @@ The plugin should produce a structured output folder for each run:
 
 - `evidence.md`: source summary, claims, confidence, and redaction notes.
 - `draft-resume.md`: initial resume based on collected evidence.
+- `resume-scorecard.md`: ATS, recruiter, page-count, keyword, and claim-risk checklist.
 - `professional-resume.md`: polished general resume.
 - `designed-resume.html`: optional professional visual resume template with optional profile-picture support.
 - `targeted-resume.md`: job-specific resume when a posting is provided.

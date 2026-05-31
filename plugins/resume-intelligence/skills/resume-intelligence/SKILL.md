@@ -1,11 +1,11 @@
 ---
 name: resume-intelligence
-description: Use when the user wants to build or tailor a resume, professional visual resume template, cover letter, LinkedIn profile recommendations, or career evidence summary from LinkedIn profile content, local project documents, Confluence, Jira, public GitHub, GitHub Enterprise, open-source contributions, profile pictures, or job postings. Trigger for requests involving resume drafting, resume tailoring, designed resumes, professional templates, cover letters, LinkedIn optimization, project evidence extraction, career impact analysis, or multi-source professional profile synthesis.
+description: Use when the user wants to build or tailor a resume, professional visual resume template, ATS/recruiter scorecard, cover letter, LinkedIn profile recommendations, or career evidence summary from LinkedIn profile content, local project documents, Confluence, Jira, public GitHub, GitHub Enterprise, open-source contributions, profile pictures, or job postings. Trigger for requests involving resume drafting, resume tailoring, ATS checks, keyword matching, designed resumes, professional templates, cover letters, LinkedIn optimization, project evidence extraction, career impact analysis, or multi-source professional profile synthesis.
 ---
 
 # Resume Intelligence
 
-Use this skill to convert approved career evidence into a professional resume system: an evidence log, draft resume, polished resume, optional designed resume, optional targeted resume, optional cover letter, job/market fit analysis, and LinkedIn profile recommendations.
+Use this skill to convert approved career evidence into a professional resume system: an evidence log, draft resume, ATS/recruiter scorecard, polished resume, optional designed resume, optional targeted resume, optional cover letter, job/market fit analysis, and LinkedIn profile recommendations.
 
 ## Guardrails
 
@@ -96,6 +96,7 @@ Use these filenames when the corresponding output is requested:
 
 - `evidence.md`
 - `draft-resume.md`
+- `resume-scorecard.md`
 - `professional-resume.md`
 - `designed-resume.html`
 - `targeted-resume.md`
@@ -110,10 +111,11 @@ Use the templates in `assets/templates/` as structure, not as rigid wording.
 1. Build `evidence.md` first.
 2. Create `draft-resume.md` from high- and medium-confidence evidence.
 3. Ask the user to confirm low-confidence claims and sensitive details before final wording.
-4. Create `professional-resume.md` using sanitized, evidence-backed bullets.
-5. If a professional template, design export, or profile picture is requested, create `designed-resume.html` from the sanitized resume content.
-6. If a job posting is provided, create `gap-analysis.md`, `targeted-resume.md`, and `cover-letter.md`.
-7. Create `linkedin-recommendations.md` with editable profile updates.
+4. Create `resume-scorecard.md` before final wording. Check page-length strategy, ATS parse safety, first-page recruiter strength, keyword coverage, unsupported claims, and job-posting gaps.
+5. Create `professional-resume.md` using sanitized, evidence-backed bullets and the scorecard recommendations.
+6. If a professional template, design export, or profile picture is requested, create `designed-resume.html` from the sanitized resume content.
+7. If a job posting is provided, create `gap-analysis.md`, `targeted-resume.md`, and `cover-letter.md`.
+8. Create `linkedin-recommendations.md` with editable profile updates.
 
 ## Final Response
 
@@ -123,4 +125,5 @@ Summarize:
 - Sources used and skipped.
 - Sensitive items that require user review.
 - Low-confidence claims that need confirmation.
+- Scorecard findings for ATS safety, recruiter strength, page length, and keyword gaps.
 - Clear next actions for the user.
