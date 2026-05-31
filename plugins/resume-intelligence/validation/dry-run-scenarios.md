@@ -26,15 +26,20 @@ Input:
 - Years of experience: 12.
 - Target role: staff platform engineer.
 - Source contexts: `github-enterprise` and `github-public`.
+- Public GitHub source context: `github-public-rajain5`, type `github-public`, host `github.com`, identity `rajain5`, credential boundary `public-web-or-public-github-connector`, disclosure `public`, quoting rule `ask-before-use`.
+- Enterprise GitHub source context: `github-enterprise-work`, type `github-enterprise`, host `ghe.example.internal`, identity `work-user@example.com`, credential boundary `enterprise-connector-work`, disclosure `internal-summary-only`, quoting rule `summarize-only`.
 - Enterprise evidence: private PR summaries for CI/CD modernization, service reliability, and migration work.
 - Public evidence: open-source Kubernetes operator contributions.
 
 Expected outputs:
 
 - `evidence.md` preserves separate source contexts.
+- `evidence.md` contains separate source-context rows with distinct host, identity, credential boundary, disclosure level, and quoting rule.
 - Enterprise repository names are summarized unless approved.
 - Public open-source contributions are visible in a separate section.
 - Final bullets combine career impact without losing provenance in the evidence log.
+- No credentials, tokens, cookies, private URLs, Enterprise hostnames, private repository names, PR URLs, or raw internal identifiers appear in final user-facing outputs unless explicitly approved.
+- Claims from public GitHub and Enterprise GitHub reference their own source-context IDs and are not merged into a single provenance entry.
 
 ## Scenario 3: Jira, Confluence, and Local Documents
 
@@ -78,11 +83,16 @@ Input:
 - Years of experience: 11.
 - Target role: senior engineering leader.
 - Source contexts: `linkedin-profile`, `local-docs`, and `profile-picture`.
+- LinkedIn evidence: exported profile content, pasted profile content, user notes, or user-approved manually provided public profile text; no automated LinkedIn scraping.
 - Profile-picture evidence: user-provided local image path with permission to include it in visual resume output.
 
 Expected outputs:
 
+- `evidence.md` records the `linkedin-profile` source form and confirms no automated scraping.
+- `evidence.md` records the `profile-picture` source context with local path or attachment label, user approval, and embed/link/omit preference.
 - `professional-resume.md` remains ATS-friendly and text-first.
 - `designed-resume.html` includes sanitized resume content and a profile-picture slot.
+- `designed-resume.html` does not fetch, search for, scrape, or upload profile pictures.
 - Profile picture is referenced only through the user-approved local path or left as a replacement placeholder.
 - Output guidance explains browser-to-PDF export and copy/import into Canva, Figma, Google Docs, or Word.
+- Guidance states third-party design import is manual only and profile pictures/private resume content are not uploaded automatically.
