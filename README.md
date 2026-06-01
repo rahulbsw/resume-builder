@@ -1,5 +1,7 @@
 # Resume Intelligence
 
+[![skills.sh](https://skills.sh/b/rahulbsw/resume-builder)](https://skills.sh/rahulbsw/resume-builder)
+
 Resume Intelligence is a local Codex/Claude/Cursor-friendly plugin for building evidence-backed resumes, ATS-safe application files, recruiter-facing visual resumes, LinkedIn recommendations, job match reports, and interview prep from approved career evidence.
 
 It is designed for profiles where evidence is spread across LinkedIn exports, local project documents, Confluence, Jira, public GitHub, GitHub Enterprise, open-source work, and job postings.
