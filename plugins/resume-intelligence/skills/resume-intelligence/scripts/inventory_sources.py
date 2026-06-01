@@ -64,6 +64,14 @@ def format_mtime(path: Path) -> str:
     return str(int(path.stat().st_mtime))
 
 
+def has_binary_marker(path: Path) -> bool:
+    try:
+        with path.open("rb") as source:
+            return b"\x00" in source.read(4096)
+    except OSError:
+        return False
+
+
 def relative_inventory_path(root: Path, path: Path) -> str:
     try:
         return path.relative_to(Path.cwd().resolve()).as_posix()
@@ -89,6 +97,17 @@ def classify_file(root: Path, path: Path) -> InventoryRow:
             notes=f"stat failed: {exc.__class__.__name__}",
         )
 
+    if extension in BINARY_EXTENSIONS or has_binary_marker(path):
+        return InventoryRow(
+            relative_path=relative_path,
+            extension=extension,
+            status="skipped-binary",
+            extraction_method="none",
+            size_bytes=size_bytes,
+            modified_time=modified_time,
+            notes="binary or media file",
+        )
+
     if extension in TEXT_EXTENSIONS:
         return InventoryRow(
             relative_path=relative_path,
@@ -109,17 +128,6 @@ def classify_file(root: Path, path: Path) -> InventoryRow:
             size_bytes=size_bytes,
             modified_time=modified_time,
             notes="use DOCX/PDF tooling or ask user for converted text",
-        )
-
-    if extension in BINARY_EXTENSIONS:
-        return InventoryRow(
-            relative_path=relative_path,
-            extension=extension,
-            status="skipped-binary",
-            extraction_method="none",
-            size_bytes=size_bytes,
-            modified_time=modified_time,
-            notes="binary or media file",
         )
 
     return InventoryRow(

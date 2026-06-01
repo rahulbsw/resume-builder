@@ -83,6 +83,19 @@ class InventorySourcesTest(unittest.TestCase):
             self.assertNotIn(outside_file.as_posix(), by_path)
             self.assertEqual(by_path["linked.md"].status, "scanned")
 
+    def test_inventory_skips_text_file_with_binary_marker(self):
+        module = load_inventory_module()
+
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / "nul-marker.txt").write_bytes(b"resume evidence\x00binary payload")
+
+            rows = module.inventory_root(root)
+            by_path = {row.relative_path: row for row in rows}
+
+            self.assertEqual(by_path["nul-marker.txt"].status, "skipped-binary")
+            self.assertEqual(by_path["nul-marker.txt"].extraction_method, "none")
+
     def test_markdown_render_includes_command_and_rows(self):
         module = load_inventory_module()
 
