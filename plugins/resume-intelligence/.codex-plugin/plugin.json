@@ -1,15 +1,15 @@
 {
   "name": "resume-intelligence",
-  "version": "0.1.0+codex.20260601230741",
-  "description": "Build evidence-backed resumes, career coaching artifacts, interview prep, polished DOCX templates, visual HTML/PDF/Figma/Canva-ready resumes, ATS/recruiter scorecards, job match reports, cover letters, LinkedIn recommendations, and redaction reviews from approved career sources.",
+  "version": "0.1.0+codex.20260601232000",
+  "description": "Build evidence-backed resumes, career knowledge vaults, career coaching artifacts, interview prep, polished DOCX templates, visual HTML/PDF/Figma/Canva-ready resumes, ATS/recruiter scorecards, job match reports, cover letters, LinkedIn recommendations, and redaction reviews from approved career sources.",
   "author": {
     "name": "Local developer"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "Resume Intelligence",
-    "shortDescription": "Create resumes, visual templates, and interview prep from verified evidence.",
-    "longDescription": "Resume Intelligence guides Codex through approved LinkedIn, local document, Confluence, Jira, public GitHub, and GitHub Enterprise sources to produce recursive source inventories, tool usage logs, evidence-backed resume drafts, detailed interview resumes with full timelines and metrics, career master runs, missing-information loops, career positioning coach outputs, ATS/recruiter scorecards, professional resumes, polished ATS-safe and designed DOCX resume templates, high-fidelity HTML/PDF visual resumes, visual template selectors, Figma and Canva handoff artifacts with optional profile-picture support, job-specific resumes, cover letters, job match scoring reports, project interview briefs, technical-stack interview guides, interview prep packs, interview readiness scorecards, disclosure approval queues, final redaction reviews, and LinkedIn profile recommendations with explicit provenance and confidentiality handling.",
+    "shortDescription": "Create resumes, career vaults, visual templates, and interview prep from verified evidence.",
+    "longDescription": "Resume Intelligence guides Codex through approved LinkedIn, local document, Confluence, Jira, public GitHub, and GitHub Enterprise sources to produce recursive source inventories, tool usage logs, evidence-backed resume drafts, detailed interview resumes with full timelines and metrics, Obsidian-friendly career knowledge vaults, career master runs, missing-information loops, career positioning coach outputs, ATS/recruiter scorecards, professional resumes, polished ATS-safe and designed DOCX resume templates, high-fidelity HTML/PDF visual resumes, visual template selectors, Figma and Canva handoff artifacts with optional profile-picture support, job-specific resumes, cover letters, job match scoring reports, project interview briefs, technical-stack interview guides, interview prep packs, interview readiness scorecards, disclosure approval queues, final redaction reviews, and LinkedIn profile recommendations with explicit provenance and confidentiality handling.",
     "developerName": "Local developer",
     "category": "Productivity",
     "capabilities": [
@@ -18,7 +18,7 @@
       "Interactive"
     ],
     "defaultPrompt": [
-      "Use Resume Intelligence to build my detailed interview resume, professional resume, visual template, career coach output, job match report, and interview prep from approved career evidence."
+      "Use Resume Intelligence to build my detailed interview resume, professional resume, career knowledge vault, visual template, career coach output, job match report, and interview prep from approved career evidence."
     ]
   }
 }

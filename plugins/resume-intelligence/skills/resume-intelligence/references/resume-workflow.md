@@ -112,6 +112,21 @@ Create `missing-information-loop.md` when dates, metrics, ownership, disclosure 
 
 Create `career-positioning-coach.md` after `detailed-resume.md` and `resume-scorecard.md` when the user wants stronger positioning or when seniority/target-role alignment needs explanation. Keep the advice evidence-backed and practical: best-fit roles, seniority signals, differentiators, positioning risks, and next actions.
 
+## Career Knowledge Vault
+
+Create `career-vault/` when the user asks for future optimization, reusable career knowledge, Obsidian, an LLM wiki, or a persistent knowledge base of work history.
+
+Use `references/career-vault-workflow.md` and build the vault from structured evidence, not raw unsupported claims. The vault should compile projects, technologies, disclosure decisions, and interview notes into Obsidian-friendly Markdown pages with source context references.
+
+When `evidence.json` is available, run:
+
+```bash
+python3 plugins/resume-intelligence/skills/resume-intelligence/scripts/build_career_vault.py resume-runs/<run>/evidence.json --output-dir resume-runs/<run>/career-vault --run-name "<target role or run>" --run-date YYYY-MM-DD
+python3 plugins/resume-intelligence/skills/resume-intelligence/scripts/vault_lint.py resume-runs/<run>/career-vault > resume-runs/<run>/career-vault-lint.md
+```
+
+If only Markdown evidence is available, create structured records first or build pages manually using the same fields: project, technologies, source context, evidence reference, confidence, disclosure level, and resume use.
+
 ## Job Posting Match
 
 For each important job requirement, classify:

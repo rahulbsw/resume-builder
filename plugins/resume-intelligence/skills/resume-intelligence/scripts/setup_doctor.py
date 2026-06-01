@@ -19,6 +19,7 @@ REQUIRED_PATHS = {
     "cursor plugin manifest": "plugins/resume-intelligence/.cursor-plugin/plugin.json",
     "skill file": "plugins/resume-intelligence/skills/resume-intelligence/SKILL.md",
     "templates directory": "plugins/resume-intelligence/skills/resume-intelligence/assets/templates",
+    "vault templates directory": "plugins/resume-intelligence/skills/resume-intelligence/assets/vault-templates",
     "references directory": "plugins/resume-intelligence/skills/resume-intelligence/references",
     "scripts directory": "plugins/resume-intelligence/skills/resume-intelligence/scripts",
 }

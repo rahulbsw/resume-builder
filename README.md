@@ -16,6 +16,7 @@ It is designed for profiles where evidence is spread across LinkedIn exports, lo
 - `disclosure-approval-queue.md` and `final-redaction-review.md`: enterprise/private-source approval and final sharing checks.
 - `draft-resume.md` and `professional-resume.md`: evidence-backed resume drafts.
 - `detailed-resume.md`: full interview/master resume with timeline, roles, responsibilities, projects, impact, metrics, and missing-info questions.
+- `career-vault/` and `career-vault-lint.md`: Obsidian-friendly LLM wiki for reusable career knowledge and future optimization.
 - `career-master-run.md`, `missing-information-loop.md`, and `career-positioning-coach.md`: career strategy, missing facts, and positioning guidance.
 - `ats-resume.docx`: clean application resume for ATS/job portals.
 - `designed-resume.html` and optional `designed-resume.pdf`: high-quality recruiter/referral visual resume.
@@ -40,6 +41,7 @@ It is designed for profiles where evidence is spread across LinkedIn exports, lo
 |   |-- skills/resume-intelligence/SKILL.md   # Main workflow
 |   |-- skills/resume-intelligence/references/
 |   |-- skills/resume-intelligence/assets/
+|   |-- skills/resume-intelligence/assets/vault-templates/
 |   |-- skills/resume-intelligence/scripts/
 |   |-- skills/resume-intelligence/examples/
 |   `-- validation/dry-run-scenarios.md
@@ -189,6 +191,7 @@ Recommended optional tools:
 - Documents/DOCX tooling: create `ats-resume.docx` and render-check Word output.
 - LibreOffice `soffice`: required for reliable DOCX render QA in many local environments.
 - skills.sh CLI: install the Resume Intelligence skill directly into Codex, Claude, Cursor, or all supported local agents.
+- Obsidian: optional viewer/editor for `career-vault/` graph view, backlinks, and manual review of the LLM wiki.
 - Figma plugin/MCP: create or refine a high-quality visual resume when you approve a target Figma file.
 - Canva: useful for manual visual polish; use the generated HTML/PDF and `visual-tool-handoff.md` as the handoff package.
 - Web search: current job postings, market language, and job match scoring.
@@ -266,6 +269,24 @@ Build a career master run, detailed interview resume, missing-information loop, 
 Use evidence-backed claims only and ask for missing dates, ownership, metrics, scale, and disclosure decisions.
 ```
 
+### Career Knowledge Vault / Obsidian LLM Wiki
+
+```text
+Use $resume-intelligence to build a Career Knowledge Vault for future resume and interview optimization.
+Create an Obsidian-friendly career-vault/ from my evidence with project pages, technology pages, disclosure notes, index.md, log.md, and AGENTS.md.
+Run the vault linter and save career-vault-lint.md.
+Keep raw sources separate and preserve source context references for every claim.
+```
+
+When structured evidence JSON is available, the helper can seed the vault:
+
+```bash
+python3 plugins/resume-intelligence/skills/resume-intelligence/scripts/build_career_vault.py resume-runs/<run>/evidence.json --output-dir resume-runs/<run>/career-vault --run-name "staff platform engineer" --run-date YYYY-MM-DD
+python3 plugins/resume-intelligence/skills/resume-intelligence/scripts/vault_lint.py resume-runs/<run>/career-vault > resume-runs/<run>/career-vault-lint.md
+```
+
+Open `resume-runs/<run>/career-vault/` as an Obsidian vault when you want graph view, backlinks, and manual review. Obsidian is optional; the vault is plain Markdown and works with Codex, Claude, Cursor, VS Code, or any editor.
+
 ### Detailed Interview Resume / Master Timeline
 
 ```text
@@ -300,6 +321,7 @@ This creates `resume-runs/YYYY-MM-DD-staff-platform-engineer/` and copies the st
 - Treat enterprise Confluence, Jira, private repositories, customer names, internal URLs, and exact metrics as confidential until explicitly approved.
 - Run `setup_doctor.py` after cloning or updating when install behavior looks inconsistent.
 - Use `career-master-run.md` and `interview-readiness-scorecard.md` for preparation; use `professional-resume.md` or `ats-resume.docx` for actual applications.
+- Use `career-vault/` for durable knowledge across runs. Keep `evidence.md` as the provenance source and treat the vault as reusable synthesis.
 - Do not rely on LinkedIn scraping. Use pasted LinkedIn content, exports, public profile notes, or user-provided summaries.
 - Prefer high-confidence claims. Mark weak or inferred claims for user confirmation instead of turning them into polished bullets.
 - Use live search only for current job matching. Job postings change quickly.

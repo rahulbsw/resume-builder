@@ -340,3 +340,24 @@ Expected outputs:
 - `final-redaction-review.md` checks final outputs for credentials, secrets, private URLs, unapproved names, unapproved metrics, issue keys, page titles, low-confidence claims, and profile-image approval.
 - `professional-resume.md`, `targeted-resume.md`, `cover-letter.md`, `linkedin-recommendations.md`, and `designed-resume.html` use sanitized wording unless the user approved exact details.
 - `run-summary.md` records sensitive approvals still needed and any outputs that are not share-ready.
+
+## Scenario 19: Career Knowledge Vault / Obsidian LLM Wiki
+
+Input:
+
+- Goal: create a reusable career knowledge base for future resume optimization.
+- User asks for an Andrej Karpathy-style LLM wiki or Obsidian vault.
+- Evidence: structured `evidence.json` with project names, technologies, source contexts, evidence references, confidence, disclosure levels, and resume-use decisions.
+- Sources include public GitHub and GitHub Enterprise evidence with different disclosure rules.
+
+Expected outputs:
+
+- `career-vault/AGENTS.md` documents vault maintenance rules and evidence/disclosure guardrails.
+- `career-vault/index.md` links project pages, technology pages, and disclosure pages using Obsidian `[[links]]`.
+- `career-vault/log.md` records the ingest event.
+- `career-vault/projects/` contains one focused page per project with YAML frontmatter, summary, claims, technologies, and evidence links.
+- `career-vault/technologies/` links technologies back to supporting project pages.
+- `career-vault/disclosure/approval-needed.md` captures private, internal-summary-only, low-confidence, or sanitized-use records.
+- `career-vault-lint.md` records the lint result from `scripts/vault_lint.py`.
+- `run-summary.md` records the vault path, lint status, and any missing evidence-link or disclosure issues.
+- Raw private sources are not copied into the vault; source context IDs and evidence references are used instead.

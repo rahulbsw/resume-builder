@@ -35,3 +35,7 @@ Use `references/prompt-library.md` for copyable prompts that work in Codex, Clau
 ## Sample Runs
 
 Sample runs must use fake data only. They should demonstrate output shape, not real candidate claims. Never commit real resumes, private documents, connector exports, profile photos, job applications, or credentials.
+
+## Career Vault
+
+Use `career-vault/` when users want reusable career knowledge across many resume and interview runs. The vault is plain Markdown and can be opened in Obsidian, VS Code, Codex, Claude, Cursor, or any editor. Keep real vaults under `resume-runs/` or a private local folder, not committed sample data.

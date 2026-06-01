@@ -38,6 +38,8 @@
 | `disclosure-approval-queue.md` |  |  |
 | `final-redaction-review.md` |  |  |
 | `career-master-run.md` |  |  |
+| `career-vault/` |  |  |
+| `career-vault-lint.md` |  |  |
 | `missing-information-loop.md` |  |  |
 | `career-positioning-coach.md` |  |  |
 | `visual-template-selector.md` |  |  |
@@ -56,6 +58,7 @@
 | Confidentiality and redaction risk |  |  |
 | Recursive source coverage |  |  |
 | Career positioning support |  |  |
+| Career vault evidence links |  |  |
 | Interview readiness |  |  |
 | Visual template and upload safety |  |  |
 

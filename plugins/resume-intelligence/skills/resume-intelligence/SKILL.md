@@ -1,11 +1,11 @@
 ---
 name: resume-intelligence
-description: Use when the user wants to build or tailor a resume, detailed interview resume, career master run, career coach, interview coach, professional DOCX template, visual HTML/PDF resume, Canva-ready or Figma-ready resume, ATS/recruiter scorecard, cover letter, LinkedIn recommendations, interview prep, project interview briefs, technical-stack guide, job match scoring, redaction review, or career evidence summary from LinkedIn content, local project docs, Confluence, Jira, public GitHub, GitHub Enterprise, open-source work, profile pictures, or job postings. Trigger for resume drafting, tailoring, full career timeline, roles and responsibilities, impact metrics, ATS checks, keyword matching, DOCX generation, visual design tools, Canva/Figma handoff, browser/PDF rendering, project evidence extraction, recursive workspace analysis, tool auditing, job search, and interview prep.
+description: Use when the user wants to build or tailor a resume, detailed interview resume, career master run, career coach, interview coach, career knowledge vault, Obsidian/LLM wiki, professional DOCX template, visual HTML/PDF resume, Canva-ready or Figma-ready resume, ATS/recruiter scorecard, cover letter, LinkedIn recommendations, interview prep, project interview briefs, technical-stack guide, job match scoring, redaction review, or career evidence summary from LinkedIn content, local project docs, Confluence, Jira, public GitHub, GitHub Enterprise, open-source work, profile pictures, or job postings. Trigger for resume drafting, tailoring, full career timeline, roles and responsibilities, impact metrics, ATS checks, keyword matching, DOCX generation, visual design tools, Canva/Figma handoff, browser/PDF rendering, project evidence extraction, recursive workspace analysis, durable career memory, tool auditing, job search, and interview prep.
 ---
 
 # Resume Intelligence
 
-Use this skill to convert approved career evidence into a professional resume and interview system: source inventory, tool usage log, evidence log, draft resume, detailed interview resume, career master run, career positioning coach, ATS/recruiter scorecard, polished resume, optional ATS-safe DOCX, optional designed HTML/PDF/Figma/Canva-ready resume, optional designed DOCX companion, optional targeted resume, optional cover letter, job/market fit analysis, job match scoring report, project interview briefs, technical-stack interview guide, interview readiness scorecard, interview prep pack, disclosure approval queue, redaction review, and LinkedIn profile recommendations.
+Use this skill to convert approved career evidence into a professional resume and interview system: source inventory, tool usage log, evidence log, draft resume, detailed interview resume, career master run, career knowledge vault, career positioning coach, ATS/recruiter scorecard, polished resume, optional ATS-safe DOCX, optional designed HTML/PDF/Figma/Canva-ready resume, optional designed DOCX companion, optional targeted resume, optional cover letter, job/market fit analysis, job match scoring report, project interview briefs, technical-stack interview guide, interview readiness scorecard, interview prep pack, disclosure approval queue, redaction review, and LinkedIn profile recommendations.
 
 ## Guardrails
 
@@ -27,6 +27,7 @@ Use this skill to convert approved career evidence into a professional resume an
 - Read `references/enterprise-redaction-audit.md` before finalizing outputs from GitHub Enterprise, private Confluence, Jira, private repositories, or confidential local documents.
 - Read `references/resume-workflow.md` before producing the evidence log, resume files, cover letter, or LinkedIn recommendations.
 - Read `references/career-coaching-workflow.md` before producing career master runs, career positioning advice, interview coaching, readiness scoring, or missing-information loops.
+- Read `references/career-vault-workflow.md` before creating or querying a durable Career Knowledge Vault, Obsidian vault, LLM wiki, or future-use career memory.
 - Read `references/docx-template-workflow.md` before producing DOCX, Word, Google Docs-targeted, PDF-export, Canva-ready, Figma-ready, or visually polished resume artifacts.
 - Read `references/visual-design-tools-workflow.md` before producing visually rich HTML/PDF output, Canva-ready packages, Figma handoff, browser-rendered screenshots, or deciding whether DOCX is the right final visual surface.
 - Read `references/visual-template-profiles.md` before selecting a named visual resume profile or using a profile picture in a visual artifact.
@@ -44,6 +45,7 @@ Start by identifying the run goal:
 - Job-posting-specific resume and cover letter.
 - LinkedIn profile recommendations.
 - Career positioning or interview coaching.
+- Career Knowledge Vault, Obsidian vault, LLM wiki, or future-use knowledge base.
 - Professional DOCX, HTML/PDF, Figma-ready, Canva-ready, or visual template generation.
 - Interview preparation from resume evidence.
 - Job search and match scoring.
@@ -123,6 +125,8 @@ Use these filenames when the corresponding output is requested:
 - `draft-resume.md`
 - `detailed-resume.md`
 - `career-master-run.md`
+- `career-vault/`
+- `career-vault-lint.md`
 - `missing-information-loop.md`
 - `career-positioning-coach.md`
 - `resume-scorecard.md`
@@ -155,18 +159,19 @@ Use the templates in `assets/templates/` as structure, not as rigid wording.
 4. If private or enterprise sources are used, create `disclosure-approval-queue.md` before final user-facing wording.
 5. Create `draft-resume.md` from high- and medium-confidence evidence.
 6. If the user wants full interview preparation, career reconstruction, "all work timeline" detail, or career coaching, create `detailed-resume.md`, `career-master-run.md`, and `missing-information-loop.md` before the scorecard. Include full work chronology, roles, responsibilities, project ownership, impact, metrics, technologies, leadership scope, and questions for missing information.
-7. Ask the user to confirm low-confidence claims and sensitive details before final wording.
-8. Create `resume-scorecard.md` before final wording. Check page-length strategy, ATS parse safety, first-page recruiter strength, keyword coverage, unsupported claims, and job-posting gaps.
-9. If career positioning is requested or useful for a senior/profile rewrite, create `career-positioning-coach.md` from the detailed resume and scorecard.
-10. Create `professional-resume.md` using sanitized, evidence-backed bullets and the scorecard recommendations.
-11. If DOCX, Word, or Google Docs is requested, create `ats-resume.docx` as the primary application version and optionally `designed-resume.docx` for recruiter/referral sharing. Use `scripts/build_resume_docx.py` when it fits the content, then render-check the DOCX with the Documents skill before delivery.
-12. If an impressive visual resume, recruiter-facing resume, Canva/Figma-ready layout, profile picture, or PDF export is requested, create `visual-template-selector.md`, make `designed-resume.html` the primary visual artifact, render it with browser tooling when available, and create `designed-resume.pdf`, `visual-design-review.md`, and `visual-tool-handoff.md` when requested or useful. Use Figma tools only when the user provides or approves a Figma target file; use Canva only as a manual/import handoff unless the user explicitly approves uploading sanitized content.
-13. If a job posting is provided, create `gap-analysis.md`, `targeted-resume.md`, and `cover-letter.md`.
-14. If job search is requested, search current public job sources and create `job-match-report.md` with match scoring and citations.
-15. If interview preparation is requested, create `project-interview-briefs.md`, `technical-stack-interview-guide.md`, `interview-prep-pack.md`, and `interview-readiness-scorecard.md`.
-16. Create `linkedin-recommendations.md` with editable profile updates.
-17. If private or enterprise sources informed final outputs, create `final-redaction-review.md` before delivery.
-18. Create `run-summary.md` for substantial runs summarizing source coverage, tools used, outputs created, warning-only quality gates, sensitive approval needs, and missing user questions.
+7. If the user wants future optimization, durable knowledge, Obsidian, an LLM wiki, or reusable career memory, create or update `career-vault/` from structured evidence, then run `scripts/vault_lint.py` and save the result as `career-vault-lint.md`.
+8. Ask the user to confirm low-confidence claims and sensitive details before final wording.
+9. Create `resume-scorecard.md` before final wording. Check page-length strategy, ATS parse safety, first-page recruiter strength, keyword coverage, unsupported claims, and job-posting gaps.
+10. If career positioning is requested or useful for a senior/profile rewrite, create `career-positioning-coach.md` from the detailed resume and scorecard.
+11. Create `professional-resume.md` using sanitized, evidence-backed bullets and the scorecard recommendations.
+12. If DOCX, Word, or Google Docs is requested, create `ats-resume.docx` as the primary application version and optionally `designed-resume.docx` for recruiter/referral sharing. Use `scripts/build_resume_docx.py` when it fits the content, then render-check the DOCX with the Documents skill before delivery.
+13. If an impressive visual resume, recruiter-facing resume, Canva/Figma-ready layout, profile picture, or PDF export is requested, create `visual-template-selector.md`, make `designed-resume.html` the primary visual artifact, render it with browser tooling when available, and create `designed-resume.pdf`, `visual-design-review.md`, and `visual-tool-handoff.md` when requested or useful. Use Figma tools only when the user provides or approves a Figma target file; use Canva only as a manual/import handoff unless the user explicitly approves uploading sanitized content.
+14. If a job posting is provided, create `gap-analysis.md`, `targeted-resume.md`, and `cover-letter.md`.
+15. If job search is requested, search current public job sources and create `job-match-report.md` with match scoring and citations.
+16. If interview preparation is requested, create `project-interview-briefs.md`, `technical-stack-interview-guide.md`, `interview-prep-pack.md`, and `interview-readiness-scorecard.md`.
+17. Create `linkedin-recommendations.md` with editable profile updates.
+18. If private or enterprise sources informed final outputs, create `final-redaction-review.md` before delivery.
+19. Create `run-summary.md` for substantial runs summarizing source coverage, tools used, outputs created, warning-only quality gates, sensitive approval needs, career vault status, and missing user questions.
 
 ## Final Response
 
@@ -179,6 +184,7 @@ Summarize:
 - Low-confidence claims that need confirmation.
 - Detailed resume gaps: missing dates, responsibilities, metrics, scope, project outcomes, or stories that require user input.
 - Career positioning and interview readiness gaps when coaching outputs were requested.
+- Career vault path, lint status, and any missing evidence links when durable knowledge was requested.
 - Scorecard findings for ATS safety, recruiter strength, page length, and keyword gaps.
 - Visual tool path used: HTML/PDF, Figma, Canva handoff, DOCX, or multiple outputs.
 - Visual template profile and profile-picture approval status when visual outputs were requested.
