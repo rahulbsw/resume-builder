@@ -232,7 +232,7 @@ Do not upload private content to third-party tools without asking me first.
 ## Optimization Tips
 
 - Narrow connector queries by repo, project, space, date range, issue type, or keyword before pulling large histories.
-- Use `scripts/inventory_sources.py` for a deterministic first-pass inventory of a local evidence folder.
+- Use `python3 plugins/resume-intelligence/skills/resume-intelligence/scripts/inventory_sources.py <approved-folder> --output resume-runs/<run>/source-inventory.md` for a deterministic first-pass inventory of a local evidence folder.
 - Keep local evidence folders organized by project or employer. Recursive inventory works best when folders have meaningful names.
 - Convert important PDFs, DOCX files, and exported tickets to text-friendly formats when possible.
 - Keep one run per target role or job posting under `resume-runs/YYYY-MM-DD-<slug>/`.
