@@ -11,9 +11,9 @@
 
 ## Sources Approved
 
-| Source Context | Type | Scope | Disclosure Rule | Status |
-| --- | --- | --- | --- | --- |
-|  |  |  |  |  |
+| Source ID | Type | Host Or Root | Identity | Approved Scope | Disclosure | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+|  |  |  |  |  |  |  |
 
 ## Tools And Commands Used
 
