@@ -11,6 +11,8 @@ The roadmap should support three important use cases without splitting the proje
 - Personal local assistant for the user's resume, interview prep, LinkedIn updates, and job search.
 - Reusable open-source plugin that other Codex, Claude, and Cursor users can install and understand.
 - Enterprise-safe assistant for private Jira, Confluence, GitHub Enterprise, local documents, and confidential project evidence.
+- Visual resume designer that can produce impressive recruiter-facing templates while preserving ATS-safe application files.
+- Career and interview coach that helps the user improve positioning, rehearse stories, close gaps, and prepare for interviews.
 
 ## Compatibility Rule
 
@@ -35,12 +37,14 @@ Use a layered roadmap with a shared foundation.
 Resume Intelligence
 |-- Foundation reliability layer
 |-- Personal workflow layer
+|-- Visual template layer
+|-- Career and interview coach layer
 |-- Open-source usability layer
 |-- Enterprise safety layer
 `-- Advanced automation layer
 ```
 
-The foundation layer should improve every workflow. Personal, open-source, and enterprise features should then reuse the same source inventory, evidence model, redaction checks, and quality gates.
+The foundation layer should improve every workflow. Personal, visual, coaching, open-source, and enterprise features should then reuse the same source inventory, evidence model, redaction checks, and quality gates.
 
 ## Foundation Reliability Layer
 
@@ -151,6 +155,115 @@ Improve job-search support by separating:
 - Weak matches: meaningful must-have gaps.
 
 Scoring should remain transparent and cite job source URLs or user-provided posting text when available.
+
+## Visual Template Layer
+
+The visual template layer should make recruiter-facing output more impressive without weakening ATS safety.
+
+### Two-Surface Resume Strategy
+
+Keep two resume surfaces:
+
+- `ats-resume.docx`: clean, single-column, text-first, and suitable for job portals.
+- `designed-resume.html`, `designed-resume.pdf`, `designed-resume.docx`, or Figma/Canva handoff: visually stronger output for recruiters, referrals, networking, and portfolio-style sharing.
+
+The visual layer must not become the only application resume. The ATS-safe version remains the default submission file.
+
+### Visual Template Profiles
+
+Add named visual profiles so the user can choose a direction without redesigning from scratch.
+
+Recommended profiles:
+
+- Modern technical: strong for senior, staff, principal, cloud, platform, AI, and backend engineering profiles.
+- Executive compact: strong for engineering manager, director, principal, and cross-functional leadership profiles.
+- Open-source builder: highlights public projects, GitHub work, community contribution, and product/platform impact.
+- Enterprise transformation: emphasizes modernization, reliability, scale, governance, migration, and operational impact.
+- Minimal ATS-plus: a conservative but more polished version for users who want one file close to ATS-safe.
+
+Each profile should define typography, spacing, section priority, accent color, project treatment, skill grouping, and optional profile-picture behavior.
+
+### Visual Quality Gates
+
+Before delivering an impressive template, check:
+
+- First-page role fit is obvious within a recruiter skim.
+- Header, summary, skills, and top experience sections are visually distinct.
+- Important text is not placed only in images, headers, footers, or complex shapes.
+- Profile picture is optional and user-approved.
+- Exported PDF or rendered pages do not clip, overlap, or shrink text too far.
+- Visual design does not hide unsupported claims or keyword stuffing.
+- Canva/Figma upload remains manual or explicitly approved.
+
+### Visual Tool Handoff
+
+The plugin should prefer local HTML/PDF for high-fidelity visual output. Figma and Canva should be treated as optional handoff or refinement tools unless the user explicitly approves using them.
+
+The handoff should include:
+
+- Sanitized copy blocks.
+- Section hierarchy.
+- Color and typography guidance.
+- Profile-picture placement guidance.
+- Export instructions.
+- Privacy and upload warnings.
+
+## Career and Interview Coach Layer
+
+The coach layer should help the user improve career positioning and interview readiness, not only generate documents.
+
+### Career Positioning Coach
+
+Add a coaching workflow that reviews the evidence-backed profile and recommends:
+
+- Target role families and seniority level.
+- Strongest positioning themes.
+- Weak or missing proof points.
+- Skills to emphasize, learn, or de-emphasize.
+- LinkedIn headline and About-section direction.
+- Portfolio, open-source, certification, or project gaps.
+- Resume and interview stories that best support the target role.
+
+Recommendations should distinguish evidence-backed strengths from user-input-needed assumptions.
+
+### Interview Coaching Loop
+
+Add an iterative preparation loop:
+
+1. Generate project, behavioral, technical, system-design, and recruiter-screen questions.
+2. Ask the user to answer selected questions.
+3. Review answers for clarity, depth, structure, metrics, and risk.
+4. Rewrite or outline stronger answers without inventing facts.
+5. Track follow-up study items and missing evidence.
+
+The coach should use the detailed resume, evidence log, interview prep pack, and job posting when available.
+
+### Interview Readiness Scorecard
+
+Create an optional scorecard that rates readiness by category:
+
+- Resume walk-through.
+- Technical depth.
+- System design.
+- Behavioral stories.
+- Leadership and influence.
+- Metrics and impact.
+- Role-specific job requirements.
+- Communication clarity.
+- Confidentiality-safe storytelling.
+
+The scorecard should produce practical next steps, not just a score.
+
+### Coaching Artifacts
+
+Potential outputs:
+
+- `career-positioning.md`
+- `interview-coach-plan.md`
+- `mock-interview-questions.md`
+- `answer-review.md`
+- `interview-readiness-scorecard.md`
+- `study-plan.md`
 
 ## Open-Source Usability Layer
 
@@ -281,21 +394,29 @@ These helpers should be optional. The skill should still work with pasted conten
 - Add missing-information loop template.
 - Improve job-search match categories.
 
-### Phase 4: Open-Source Experience
+### Phase 4: Visual Templates and Coaching
+
+- Add named visual template profile guidance.
+- Add visual quality gates.
+- Add career positioning coach workflow.
+- Add interview coaching loop and readiness scorecard templates.
+- Add dry-run scenarios for impressive visual resumes and coaching artifacts.
+
+### Phase 5: Open-Source Experience
 
 - Add setup doctor checklist or script.
 - Add fake sample runs.
 - Add prompt library.
 - Improve README onboarding around safe local-only mode and optional tools.
 
-### Phase 5: Enterprise Redaction and Audit Hardening
+### Phase 6: Enterprise Redaction and Audit Hardening
 
 - Add disclosure approval queue template.
 - Strengthen source identity separation checks.
 - Add enterprise dry-run scenarios with mock private details.
 - Add final-output redaction review guidance.
 
-### Phase 6: Advanced Automation
+### Phase 7: Advanced Automation
 
 - Add optional runner helpers.
 - Add structured evidence JSON support.
@@ -322,6 +443,8 @@ Behavioral checks:
 - Existing general resume prompt still works.
 - Existing visual resume prompt still works.
 - Existing detailed interview resume prompt still works.
+- Visual template selection keeps a separate ATS-safe application file.
+- Career and interview coaching artifacts use evidence-backed claims and ask for missing facts.
 - Existing job-specific resume and cover-letter flow still works.
 - Local-only mode works without optional enterprise tools.
 - Enterprise mock scenario preserves redaction and provenance.
