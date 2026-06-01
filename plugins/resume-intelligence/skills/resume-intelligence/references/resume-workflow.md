@@ -69,6 +69,27 @@ For a job-specific resume:
 4. Preserve truthfulness and disclosure and quoting rules.
 5. Add a gap analysis instead of hiding missing requirements.
 
+## Detailed Interview Resume
+
+Create `detailed-resume.md` when the user asks for a detailed resume, master resume, full career timeline, interview preparation, or all work history with roles, responsibilities, impact, and metrics.
+
+This file is intentionally more detailed than `professional-resume.md`. It is not the primary ATS submission file. Use it to help the user prepare for interviews, reconstruct career history, and select the strongest stories.
+
+Include:
+
+- Full career timeline with dates, company, title, team/product, scope, technologies, source evidence, and confidence.
+- Role-by-role responsibilities and ownership.
+- Key projects and workstreams under each role.
+- For each project: problem, user role, architecture or technical approach, responsibilities, decisions, tradeoffs, technologies, collaborators, scale, impact, metrics, evidence, and interview story angle.
+- Impact summary by reliability, performance, cost, security, scale, adoption, developer productivity, and business/customer outcome.
+- Open-source and public work with dates, contribution type, role, impact, and evidence.
+- Technical depth by period: expert, working knowledge, exposure, or gap.
+- Metrics bank with value, context, source, confidence, and disclosure status.
+- Interview story index for system design, technical deep dive, leadership, conflict, failure, and ambiguity.
+- Missing-information questions for gaps that block a credible interview story or accurate timeline.
+
+Ask the user for missing information instead of inventing it. Prioritize questions about dates, ownership, scope, metrics, sensitive details, and outcomes.
+
 ## Job Posting Match
 
 For each important job requirement, classify:

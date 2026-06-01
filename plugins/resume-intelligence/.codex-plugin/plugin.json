@@ -1,7 +1,7 @@
 {
   "name": "resume-intelligence",
-  "version": "0.1.0+codex.20260601063805",
-  "description": "Build evidence-backed resumes, polished DOCX templates, visual HTML/PDF/Figma/Canva-ready resumes, ATS/recruiter scorecards, interview prep, job match reports, cover letters, and LinkedIn recommendations from approved career sources.",
+  "version": "0.1.0+codex.20260601183012",
+  "description": "Build evidence-backed resumes, detailed interview resumes, polished DOCX templates, visual HTML/PDF/Figma/Canva-ready resumes, ATS/recruiter scorecards, interview prep, job match reports, cover letters, and LinkedIn recommendations from approved career sources.",
   "author": {
     "name": "Local developer"
   },
@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "Resume Intelligence",
     "shortDescription": "Create resumes, visual templates, and interview prep from verified evidence.",
-    "longDescription": "Resume Intelligence guides Codex through approved LinkedIn, local document, Confluence, Jira, public GitHub, and GitHub Enterprise sources to produce recursive source inventories, tool usage logs, evidence-backed resume drafts, ATS/recruiter scorecards, professional resumes, polished ATS-safe and designed DOCX resume templates, high-fidelity HTML/PDF visual resumes, Figma and Canva handoff artifacts with optional profile-picture support, job-specific resumes, cover letters, job match scoring reports, project interview briefs, technical-stack interview guides, interview prep packs, and LinkedIn profile recommendations with explicit provenance and confidentiality handling.",
+    "longDescription": "Resume Intelligence guides Codex through approved LinkedIn, local document, Confluence, Jira, public GitHub, and GitHub Enterprise sources to produce recursive source inventories, tool usage logs, evidence-backed resume drafts, detailed interview resumes with full timelines and metrics, ATS/recruiter scorecards, professional resumes, polished ATS-safe and designed DOCX resume templates, high-fidelity HTML/PDF visual resumes, Figma and Canva handoff artifacts with optional profile-picture support, job-specific resumes, cover letters, job match scoring reports, project interview briefs, technical-stack interview guides, interview prep packs, and LinkedIn profile recommendations with explicit provenance and confidentiality handling.",
     "developerName": "Local developer",
     "category": "Productivity",
     "capabilities": [
@@ -18,7 +18,7 @@
       "Interactive"
     ],
     "defaultPrompt": [
-      "Use Resume Intelligence to build my resume, high-quality visual template, job match report, and interview prep from approved career evidence."
+      "Use Resume Intelligence to build my detailed interview resume, professional resume, visual template, job match report, and interview prep from approved career evidence."
     ]
   }
 }

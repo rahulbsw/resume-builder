@@ -8,6 +8,7 @@ Use only evidence-backed profile data unless the user provides new details:
 
 - `source-inventory.md` and `tool-usage-log.md` to confirm source coverage.
 - `evidence.md` for claims, confidence, provenance, and disclosure rules.
+- `detailed-resume.md` for full timeline, roles, responsibilities, impact, metrics, and story gaps.
 - `draft-resume.md`, `professional-resume.md`, and `resume-scorecard.md` for positioning.
 - `gap-analysis.md`, user-provided postings, or live job-search results for job-specific prep.
 - User's target role family, seniority, years of experience, geography, work model, and compensation constraints when provided.
@@ -66,7 +67,7 @@ Explain every score. Do not copy job descriptions into the resume. Use supported
 The final preparation pack should be practical for rehearsing:
 
 - Recruiter screen: concise profile narrative, current target, availability constraints, and compensation placeholders when requested.
-- Resume walk-through: 3-5 minute storyline connecting roles, projects, and target job.
+- Resume walk-through: 3-5 minute storyline connecting roles, projects, target job, and the full chronology from `detailed-resume.md`.
 - Project deep dives: strongest projects with STAR stories and technical follow-ups.
 - Technical refresh: concepts, architecture patterns, debugging scenarios, and tradeoffs.
 - Behavioral bank: leadership, conflict, ambiguity, failure, mentoring, stakeholder management, delivery pressure, and incident response.

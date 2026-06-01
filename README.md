@@ -10,6 +10,7 @@ It is designed for profiles where evidence is spread across LinkedIn exports, lo
 - `tool-usage-log.md`: tools, commands, connector calls, searches, and manual inputs used.
 - `evidence.md`: source-backed claims with confidence and disclosure rules.
 - `draft-resume.md` and `professional-resume.md`: evidence-backed resume drafts.
+- `detailed-resume.md`: full interview/master resume with timeline, roles, responsibilities, projects, impact, metrics, and missing-info questions.
 - `ats-resume.docx`: clean application resume for ATS/job portals.
 - `designed-resume.html` and optional `designed-resume.pdf`: high-quality recruiter/referral visual resume.
 - `designed-resume.docx`: optional editable Word companion, not the main visual surface.
@@ -197,6 +198,14 @@ Use $resume-intelligence to prepare interview material from my strongest project
 Create project deep dives, technical-stack preparation, behavioral stories, system design prompts, and recruiter-screen talking points.
 ```
 
+### Detailed Interview Resume / Master Timeline
+
+```text
+Use $resume-intelligence to create a detailed interview resume.
+Include my full work timeline, every role, responsibilities, important projects, ownership, architecture decisions, impact, metrics, technologies, and questions for any missing information.
+Do not invent dates, metrics, or ownership. Ask me for anything that is missing or low-confidence.
+```
+
 ### Visual Resume
 
 ```text
@@ -226,6 +235,7 @@ Do not upload private content to third-party tools without asking me first.
 - Keep one run per target role or job posting under `resume-runs/YYYY-MM-DD-<slug>/`.
 - Reuse confirmed evidence across runs instead of re-collecting everything from scratch.
 - Focus interview prep on the top 3-5 projects that show architecture, tradeoffs, ownership, impact, and lessons learned.
+- Use `detailed-resume.md` as the master source for interview preparation, then trim into `professional-resume.md` and `targeted-resume.md` for applications.
 - Use Figma or Canva only after content is sanitized and stable; otherwise visual polish will amplify content churn.
 
 ## Privacy And Credential Rules

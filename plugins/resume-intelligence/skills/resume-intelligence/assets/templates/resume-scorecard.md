@@ -3,6 +3,7 @@
 ## Recommendation
 
 - Recommended page count:
+- Detailed interview resume status:
 - ATS risk level: Low | Medium | High
 - Recruiter skim strength: Strong | Adequate | Weak
 - Keyword coverage:
@@ -67,6 +68,16 @@
 | Claim | Risk | Needed Confirmation |
 | --- | --- | --- |
 |  |  |  |
+
+## Detailed Resume Gaps
+
+| Gap | Role / Project | Why It Matters | Question For User |
+| --- | --- | --- | --- |
+| Missing dates |  | Timeline accuracy |  |
+| Missing ownership |  | Interview credibility |  |
+| Missing metric |  | Impact strength |  |
+| Missing scope |  | Technical depth |  |
+| Sensitive detail |  | Disclosure safety |  |
 
 ## Final Notes
 

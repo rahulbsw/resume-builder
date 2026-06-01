@@ -18,6 +18,7 @@ Expected outputs:
 - `tool-usage-log.md` records the public GitHub tool or manual export used.
 - `evidence.md` includes public source context and public quoting rule.
 - `draft-resume.md` includes open-source contribution section.
+- `detailed-resume.md` is created when interview prep or full timeline detail is requested.
 - `resume-scorecard.md` recommends one or two pages based on evidence density and flags ATS risks before final wording.
 - `professional-resume.md` uses public repository context only when evidence confirms visibility.
 
@@ -141,6 +142,7 @@ Input:
 Expected outputs:
 
 - `project-interview-briefs.md` includes selected projects with 30-second pitch, 90-second pitch, STAR story, architecture, tradeoffs, impact, and likely follow-up questions.
+- `detailed-resume.md` includes full chronology, role responsibilities, project workstreams, impact, metrics, and questions for missing dates or outcomes.
 - `technical-stack-interview-guide.md` maps each target technology to evidence level, architecture role, tradeoffs, alternatives, failure modes, and interview questions.
 - `interview-prep-pack.md` includes recruiter screen, resume walk-through, behavioral story bank, technical deep dives, system design prompts, questions to ask, and study plan.
 - Confidential enterprise names and raw internal identifiers remain sanitized.
@@ -200,3 +202,22 @@ Expected outputs:
 - `visual-tool-handoff.md` provides Canva copy blocks, Figma handoff notes, and privacy/upload status.
 - Figma tools are used only when a target Figma file is provided or approved.
 - Canva upload is not automatic; the workflow provides a manual/import handoff unless the user explicitly approves third-party upload.
+
+## Scenario 11: Detailed Interview Resume
+
+Input:
+
+- Goal: detailed interview resume and master career timeline.
+- Years of experience: 14.
+- Evidence: LinkedIn export, current resume, local project documents, GitHub Enterprise summaries, public GitHub contributions, and Jira/Confluence exports.
+- Known gaps: missing exact dates for two roles, missing incident-reduction metric, unclear ownership boundary on one migration, and unapproved internal project names.
+
+Expected outputs:
+
+- `detailed-resume.md` includes a full work timeline with dates, companies, titles, team/product scope, technologies, source evidence, and confidence.
+- Each role includes responsibilities, systems owned, leadership/collaboration scope, key projects, decisions, tradeoffs, impact, and metrics.
+- Metrics are captured in a metrics bank with confidence and disclosure status.
+- Missing information is captured as direct user questions, not invented.
+- Sensitive enterprise names, customer names, private repository names, internal URLs, Jira IDs, and Confluence titles are sanitized or marked for approval.
+- `interview-prep-pack.md` references `detailed-resume.md` for the resume walkthrough and story selection.
+- `resume-scorecard.md` lists detailed-resume gaps that need user confirmation before final interview prep.

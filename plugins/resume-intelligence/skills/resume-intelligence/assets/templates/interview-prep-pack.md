@@ -5,6 +5,7 @@
 - Target company or role:
 - Target seniority:
 - Interview type:
+- Detailed resume source:
 - Strongest evidence themes:
 - Main gaps to prepare:
 
@@ -33,6 +34,7 @@
 - Key transitions:
 - Strongest project:
 - Why this role:
+- Detailed timeline notes:
 
 ## Behavioral Story Bank
 

@@ -4,7 +4,7 @@ Date: 2026-05-30
 
 ## Goal
 
-Build a Codex/Claude plugin named `resume-intelligence` with one core skill that helps a user turn verified career evidence into a professional resume, polished DOCX resume template, HTML/PDF/Figma/Canva-ready visual resume, ATS/recruiter scorecard, optional job-specific resume and cover letter, LinkedIn profile improvement recommendations, job match scoring report, and interview preparation pack.
+Build a Codex/Claude plugin named `resume-intelligence` with one core skill that helps a user turn verified career evidence into a detailed interview resume, professional resume, polished DOCX resume template, HTML/PDF/Figma/Canva-ready visual resume, ATS/recruiter scorecard, optional job-specific resume and cover letter, LinkedIn profile improvement recommendations, job match scoring report, and interview preparation pack.
 
 The plugin should support users whose work evidence is spread across LinkedIn, local documents, Confluence, Jira, GitHub Enterprise, and public GitHub. It must handle enterprise and open-source contributions as separate source contexts because they may use different hosts, credentials, access rules, and disclosure constraints.
 
@@ -142,7 +142,11 @@ Create an initial resume draft from the evidence set:
 
 All bullets should be traceable back to source evidence. Unverified or weakly supported claims should be marked for user confirmation.
 
-### 4a. Resume Scorecard
+### 4a. Detailed Interview Resume
+
+When requested, generate `detailed-resume.md` as a master interview resume. It should include full career chronology, roles, responsibilities, systems owned, key projects, architecture decisions, tradeoffs, technologies, collaborators, impact, metrics, disclosure rules, and missing-information questions. This is intentionally more detailed than the application resume and should be used for interview preparation and story selection.
+
+### 4b. Resume Scorecard
 
 Before final resume wording, create a scorecard that checks:
 
@@ -235,6 +239,7 @@ The plugin should produce a structured output folder for each run:
 - `source-inventory.md`: approved sources, recursive local file inventory, connector scopes, job search sources, and skipped-source reasons.
 - `tool-usage-log.md`: tools, connector calls, commands, searches, and manual inputs used during collection.
 - `draft-resume.md`: initial resume based on collected evidence.
+- `detailed-resume.md`: optional master/interview resume with full timeline, role detail, responsibilities, impact, metrics, and user questions.
 - `resume-scorecard.md`: ATS, recruiter, page-count, keyword, and claim-risk checklist.
 - `professional-resume.md`: polished general resume.
 - `ats-resume.docx`: optional ATS-safe DOCX application file.
