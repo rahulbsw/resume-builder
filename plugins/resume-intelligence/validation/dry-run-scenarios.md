@@ -221,3 +221,56 @@ Expected outputs:
 - Sensitive enterprise names, customer names, private repository names, internal URLs, Jira IDs, and Confluence titles are sanitized or marked for approval.
 - `interview-prep-pack.md` references `detailed-resume.md` for the resume walkthrough and story selection.
 - `resume-scorecard.md` lists detailed-resume gaps that need user confirmation before final interview prep.
+
+## Scenario 12: Compatibility And Warning-Only Quality Gates
+
+Input:
+
+- Goal: general resume and interview prep.
+- Years of experience: 12.
+- Sources: pasted LinkedIn profile, local documents, and public GitHub summary.
+- Limitation: local inventory helper is unavailable.
+- Evidence gaps: missing exact metric and one unclear ownership boundary.
+
+Expected outputs:
+
+- Existing outputs such as `source-inventory.md`, `tool-usage-log.md`, `evidence.md`, `draft-resume.md`, `professional-resume.md`, and interview-prep files still use the existing workflow.
+- `tool-usage-log.md` records that the optional inventory helper was unavailable.
+- `run-summary.md` lists the limitation and missing user questions.
+- `resume-scorecard.md` treats missing metrics and weak ownership as warnings.
+- Resume generation continues unless credentials, secrets, private URLs, or unapproved confidential details would be exposed.
+
+## Scenario 13: Deterministic Local Source Inventory
+
+Input:
+
+- Goal: evidence extraction and detailed interview resume.
+- Local root contains nested folders with Markdown, JSON, DOCX, PDF, PNG, and unsupported custom files.
+- User approves the local root for inventory.
+
+Expected outputs:
+
+- `source-inventory.md` is produced or seeded from `scripts/inventory_sources.py`.
+- Every nested file appears in the inventory.
+- Text-oriented files are marked scanned for first-pass review.
+- DOCX and PDF files are marked needs-user-input or later updated when document tooling extracts text.
+- Binary and unsupported files are listed with reasons.
+- `tool-usage-log.md` records the inventory helper command or documented fallback.
+- `run-summary.md` reports total scanned, skipped, and needs-user-input files.
+
+## Scenario 14: Evidence Schema And Run Summary
+
+Input:
+
+- Goal: job-specific resume and interview prep.
+- Evidence contains five claims across local docs, public GitHub, and GitHub Enterprise summaries.
+- Two claims are medium confidence because metrics are missing.
+- One claim requires sanitized enterprise wording.
+
+Expected outputs:
+
+- `evidence.md` follows the evidence schema fields in human-readable Markdown.
+- If `evidence.json` is created, it follows `references/evidence-schema.md`.
+- `run-summary.md` lists source contexts, outputs created, warning-only quality gates, missing metrics, and sensitive approval needs.
+- Final polished outputs use high-confidence and approved medium-confidence claims only.
+- Low-confidence or sensitive claims remain questions or sanitized summaries.
