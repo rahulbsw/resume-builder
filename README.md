@@ -127,6 +127,39 @@ cursor --add-mcp '{"name":"example-tool","command":"example-command","args":["--
 
 Use your real MCP server command and credentials. Do not commit tokens or secrets to this repository.
 
+## Install With skills.sh
+
+Use this option when you want to install only the Resume Intelligence skill through the Skills CLI. For full Codex/Claude plugin metadata, marketplace install, and Codex cachebuster behavior, use the plugin install sections above.
+
+You can run the CLI through `npx`:
+
+```bash
+npx skills add https://github.com/rahulbsw/resume-builder/tree/master/plugins/resume-intelligence/skills/resume-intelligence -a codex
+npx skills add https://github.com/rahulbsw/resume-builder/tree/master/plugins/resume-intelligence/skills/resume-intelligence -a claude
+npx skills add https://github.com/rahulbsw/resume-builder/tree/master/plugins/resume-intelligence/skills/resume-intelligence -a cursor
+```
+
+To install for every supported local agent:
+
+```bash
+npx skills add https://github.com/rahulbsw/resume-builder/tree/master/plugins/resume-intelligence/skills/resume-intelligence -g -a all
+```
+
+For local development from a clone:
+
+```bash
+git clone https://github.com/rahulbsw/resume-builder.git
+cd resume-builder
+npx skills add plugins/resume-intelligence/skills/resume-intelligence -a codex
+```
+
+If you prefer a global CLI install:
+
+```bash
+npm install -g @skills/cli
+skills add https://github.com/rahulbsw/resume-builder/tree/master/plugins/resume-intelligence/skills/resume-intelligence -a codex
+```
+
 ## Optional Tools For Best Experience
 
 Resume Intelligence works with pasted text and local files, but it is strongest when the agent has tools for source collection, document rendering, and visual design.
@@ -139,6 +172,7 @@ Recommended optional tools:
 - Browser or Chrome tool: review local HTML resumes and export PDF when supported.
 - Documents/DOCX tooling: create `ats-resume.docx` and render-check Word output.
 - LibreOffice `soffice`: required for reliable DOCX render QA in many local environments.
+- skills.sh CLI: install the Resume Intelligence skill directly into Codex, Claude, Cursor, or all supported local agents.
 - Figma plugin/MCP: create or refine a high-quality visual resume when you approve a target Figma file.
 - Canva: useful for manual visual polish; use the generated HTML/PDF and `visual-tool-handoff.md` as the handoff package.
 - Web search: current job postings, market language, and job match scoring.
