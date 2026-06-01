@@ -4,7 +4,7 @@ Date: 2026-05-30
 
 ## Goal
 
-Build a Codex/Claude plugin named `resume-intelligence` with one core skill that helps a user turn verified career evidence into a professional resume, ATS/recruiter scorecard, optional professional visual resume template, optional job-specific resume and cover letter, LinkedIn profile improvement recommendations, job match scoring report, and interview preparation pack.
+Build a Codex/Claude plugin named `resume-intelligence` with one core skill that helps a user turn verified career evidence into a professional resume, polished DOCX resume template, ATS/recruiter scorecard, optional professional visual resume template, optional job-specific resume and cover letter, LinkedIn profile improvement recommendations, job match scoring report, and interview preparation pack.
 
 The plugin should support users whose work evidence is spread across LinkedIn, local documents, Confluence, Jira, GitHub Enterprise, and public GitHub. It must handle enterprise and open-source contributions as separate source contexts because they may use different hosts, credentials, access rules, and disclosure constraints.
 
@@ -26,6 +26,7 @@ The plugin gives us a durable container for:
 
 - A core `resume-intelligence` skill.
 - Resume and cover-letter templates.
+- ATS-safe and designed DOCX resume template generation guidance.
 - Source inventory, tool usage, job match, and interview preparation templates.
 - Reference guidance for source handling, evidence scoring, and sanitization.
 - Future deterministic scripts for parsing local documents and normalizing evidence.
@@ -179,11 +180,13 @@ Produce a polished resume that is:
 
 ### 6a. Professional Template and Profile Picture
 
-When the user requests a professional template or provides a profile picture, create a designed resume artifact that can be exported or copied into tools such as Canva, Figma, Google Docs, Word, or another design editor.
+When the user requests a professional template or provides a profile picture, create designed resume artifacts that can be exported or copied into tools such as Canva, Figma, Google Docs, Word, or another design editor.
 
 The designed template should:
 
 - Keep the resume content ATS-friendly in the Markdown version.
+- Create `ats-resume.docx` as the primary application version when DOCX is requested.
+- Create `designed-resume.docx` as a recruiter/referral companion when the user wants a more impressive Word-ready layout.
 - Provide a visually polished HTML/CSS layout for human review and PDF printing.
 - Include an optional profile-picture slot only when the user provides an image or asks for one.
 - Avoid embedding private image metadata into shared artifacts when possible.
@@ -232,6 +235,8 @@ The plugin should produce a structured output folder for each run:
 - `draft-resume.md`: initial resume based on collected evidence.
 - `resume-scorecard.md`: ATS, recruiter, page-count, keyword, and claim-risk checklist.
 - `professional-resume.md`: polished general resume.
+- `ats-resume.docx`: optional ATS-safe DOCX application file.
+- `designed-resume.docx`: optional polished DOCX recruiter/referral companion.
 - `designed-resume.html`: optional professional visual resume template with optional profile-picture support.
 - `targeted-resume.md`: job-specific resume when a posting is provided.
 - `cover-letter.md`: job-specific cover letter when a posting is provided.
@@ -268,9 +273,11 @@ Initial plugin structure:
 - `skills/resume-intelligence/agents/openai.yaml`
 - `skills/resume-intelligence/references/source-model.md`
 - `skills/resume-intelligence/references/resume-workflow.md`
+- `skills/resume-intelligence/references/docx-template-workflow.md`
 - `skills/resume-intelligence/references/interview-job-workflow.md`
 - `skills/resume-intelligence/references/privacy-sanitization.md`
 - `skills/resume-intelligence/assets/templates/`
+- `skills/resume-intelligence/scripts/build_resume_docx.py`
 - `skills/resume-intelligence/assets/templates/designed-resume.html`
 
 Scripts can be added later for deterministic document parsing, evidence normalization, and output rendering.
@@ -288,6 +295,7 @@ The first implementation should be validated by:
   - Jira and Confluence with local documents,
   - recursive local document inventory,
   - professional designed resume with optional profile picture,
+  - professional DOCX template generation,
   - job-posting-specific resume and cover letter,
   - interview preparation,
   - job search and match scoring.

@@ -119,6 +119,8 @@ For the ATS-safe resume, check:
 
 The designed HTML resume can be more polished, but it is not the primary ATS submission format.
 
+The DOCX application resume should follow the same ATS-safe rules. If a more impressive visual DOCX is requested, create it as a companion `designed-resume.docx`, not as the only application resume.
+
 ### Recruiter First-Page Strength
 
 The first page should show the role match within a short skim:
@@ -207,6 +209,8 @@ Create `designed-resume.html` when the user requests a professional template, vi
 
 Use the sanitized content from `professional-resume.md`. Keep the Markdown resume as the ATS-friendly source of truth.
 
+Create `ats-resume.docx` and `designed-resume.docx` when the user requests DOCX, Word, Google Docs, PDF export, or a more impressive resume template. Before creating DOCX files, read `docx-template-workflow.md`.
+
 The designed resume should:
 
 - Use a restrained professional layout.
@@ -215,6 +219,13 @@ The designed resume should:
 - Include print CSS for browser-to-PDF export.
 - Include a short comment explaining that the HTML can be copied into Canva, Figma, Google Docs, Word, or another design tool.
 - Avoid decorative elements that make content hard to scan.
+
+The designed DOCX should:
+
+- Use a named template profile: `modern-technical` or `executive-compact`.
+- Use normal Word document flow for core content.
+- Render cleanly to page images before delivery when the Documents skill renderer is available.
+- Be labeled as recruiter/referral-ready when it uses layout features that are not ideal for ATS parsing.
 
 ## LinkedIn Recommendations
 

@@ -22,6 +22,9 @@
 | --- | --- | --- | --- |
 | Source inventory created before resume drafting |  |  |  |
 | Tool usage log shows local folders and connector scopes attempted |  |  |  |
+| ATS DOCX is single-column and text-first |  |  |  |
+| Designed DOCX is clearly labeled as recruiter/referral version |  |  |  |
+| DOCX render review completed or limitation documented |  |  |  |
 | Standard section headings |  |  |  |
 | No profile photo in ATS version |  |  |  |
 | No complex tables or text boxes |  |  |  |
@@ -68,3 +71,11 @@
 ## Final Notes
 
 -
+
+## DOCX Template Recommendation
+
+- Application file:
+- Designed companion:
+- Template profile:
+- Render QA status:
+- When to use each file:

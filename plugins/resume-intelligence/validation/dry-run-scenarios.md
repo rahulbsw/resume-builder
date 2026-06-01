@@ -107,6 +107,8 @@ Expected outputs:
 - Profile picture is referenced only through the user-approved local path or left as a replacement placeholder.
 - Output guidance explains browser-to-PDF export and copy/import into Canva, Figma, Google Docs, or Word.
 - Guidance states third-party design import is manual only and profile pictures/private resume content are not uploaded automatically.
+- If DOCX is requested, `ats-resume.docx` is created as the application version and `designed-resume.docx` is created only as a recruiter/referral companion.
+- `docx-render-review.md` records the selected DOCX template profile and render QA result or renderer limitation.
 
 ## Scenario 6: Recursive Workspace Documents
 
@@ -161,3 +163,21 @@ Expected outputs:
 - `job-match-report.md` scores each accessible listing using role/seniority, required technical skills, domain/platform fit, impact/leadership fit, location/work model, and gap risk.
 - Listings that are expired, inaccessible, or missing full text are marked and not treated as validated opportunities.
 - `gap-analysis.md`, `targeted-resume.md`, `cover-letter.md`, and `interview-prep-pack.md` use evidence-backed keywords only.
+
+## Scenario 9: Professional DOCX Template Quality
+
+Input:
+
+- Goal: professional DOCX resume template.
+- Years of experience: 12.
+- Target role: staff platform engineer.
+- User feedback: previous DOCX was too plain and not impressive.
+- Evidence: sanitized professional resume content with strong technical projects and skill categories.
+
+Expected outputs:
+
+- `ats-resume.docx` uses the `ats-safe` profile, standard section headings, no profile photo, no sidebar, and no important content hidden in headers or footers.
+- `designed-resume.docx` uses `modern-technical` or `executive-compact` with stronger typography, restrained accent color, compact skill treatment, and clear first-page role fit.
+- `designed-resume.html` remains available for Canva/Figma/manual design import when requested.
+- `docx-render-review.md` documents visual QA or states that LibreOffice/rendering was unavailable.
+- The final response tells the user which file to submit to ATS and which file to use for recruiter/referral sharing.

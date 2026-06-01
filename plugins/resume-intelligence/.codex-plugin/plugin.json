@@ -1,15 +1,15 @@
 {
   "name": "resume-intelligence",
-  "version": "0.1.0+codex.20260531193446",
-  "description": "Build evidence-backed resumes, ATS/recruiter scorecards, interview prep, job match reports, designed templates, cover letters, and LinkedIn recommendations from approved career sources.",
+  "version": "0.1.0+codex.20260601054708",
+  "description": "Build evidence-backed resumes, polished DOCX templates, ATS/recruiter scorecards, interview prep, job match reports, cover letters, and LinkedIn recommendations from approved career sources.",
   "author": {
     "name": "Local developer"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "Resume Intelligence",
-    "shortDescription": "Create resumes and interview prep from verified evidence.",
-    "longDescription": "Resume Intelligence guides Codex through approved LinkedIn, local document, Confluence, Jira, public GitHub, and GitHub Enterprise sources to produce recursive source inventories, tool usage logs, evidence-backed resume drafts, ATS/recruiter scorecards, professional resumes, professional visual resume templates with optional profile-picture support, job-specific resumes, cover letters, job match scoring reports, project interview briefs, technical-stack interview guides, interview prep packs, and LinkedIn profile recommendations with explicit provenance and confidentiality handling.",
+    "shortDescription": "Create resumes, DOCX templates, and interview prep from verified evidence.",
+    "longDescription": "Resume Intelligence guides Codex through approved LinkedIn, local document, Confluence, Jira, public GitHub, and GitHub Enterprise sources to produce recursive source inventories, tool usage logs, evidence-backed resume drafts, ATS/recruiter scorecards, professional resumes, polished ATS-safe and designed DOCX resume templates, professional visual resume templates with optional profile-picture support, job-specific resumes, cover letters, job match scoring reports, project interview briefs, technical-stack interview guides, interview prep packs, and LinkedIn profile recommendations with explicit provenance and confidentiality handling.",
     "developerName": "Local developer",
     "category": "Productivity",
     "capabilities": [
@@ -18,7 +18,7 @@
       "Interactive"
     ],
     "defaultPrompt": [
-      "Use Resume Intelligence to build my resume, job match report, and interview prep from approved career evidence."
+      "Use Resume Intelligence to build my resume, polished DOCX template, job match report, and interview prep from approved career evidence."
     ]
   }
 }
