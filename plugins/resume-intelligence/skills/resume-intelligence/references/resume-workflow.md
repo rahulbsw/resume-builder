@@ -205,11 +205,13 @@ Create `interview-prep-pack.md` as the practical study plan:
 
 ## Designed Resume
 
-Create `designed-resume.html` when the user requests a professional template, visual resume, Canva/Figma-ready layout, printable design, or profile-picture support.
+Create `designed-resume.html` when the user requests a professional template, visual resume, Canva/Figma-ready layout, printable design, PDF export, recruiter-facing design, or profile-picture support.
 
 Use the sanitized content from `professional-resume.md`. Keep the Markdown resume as the ATS-friendly source of truth.
 
 Create `ats-resume.docx` and `designed-resume.docx` when the user requests DOCX, Word, Google Docs, PDF export, or a more impressive resume template. Before creating DOCX files, read `docx-template-workflow.md`.
+
+When the user wants the design to be impressive, read `visual-design-tools-workflow.md` and prefer HTML/PDF/Figma for the visual artifact. DOCX can be polished, but it should not be treated as the highest-fidelity design surface.
 
 The designed resume should:
 
@@ -219,6 +221,8 @@ The designed resume should:
 - Include print CSS for browser-to-PDF export.
 - Include a short comment explaining that the HTML can be copied into Canva, Figma, Google Docs, Word, or another design tool.
 - Avoid decorative elements that make content hard to scan.
+- Produce `visual-design-review.md` when browser, PDF, Figma, or Canva handoff is part of the request.
+- Produce `visual-tool-handoff.md` when the user asks for Canva, Figma, another design tool, or manual design editing.
 
 The designed DOCX should:
 
@@ -226,6 +230,13 @@ The designed DOCX should:
 - Use normal Word document flow for core content.
 - Render cleanly to page images before delivery when the Documents skill renderer is available.
 - Be labeled as recruiter/referral-ready when it uses layout features that are not ideal for ATS parsing.
+
+For Canva or Figma handoff:
+
+- Do not upload private content automatically.
+- Use sanitized copy blocks and local visual artifacts first.
+- Use Figma MCP tools only when the user provides or approves a target Figma file.
+- Keep `ats-resume.docx` as the job-portal submission file.
 
 ## LinkedIn Recommendations
 

@@ -79,3 +79,12 @@
 - Template profile:
 - Render QA status:
 - When to use each file:
+
+## Visual Tool Recommendation
+
+- Best visual surface: HTML/PDF | Figma | Canva handoff | DOCX
+- Reason:
+- Recruiter/referral artifact:
+- ATS artifact:
+- Third-party upload needed: Yes | No
+- User approval needed:

@@ -11,6 +11,8 @@ Create two resume surfaces when the user wants an impressive template:
 
 Keep `professional-resume.md` as the content source of truth. Do not let the visual template introduce unsupported claims, hidden keyword stuffing, internal names, or unapproved profile photos.
 
+If the user says the HTML resume looks better than the DOCX, treat that as expected. Keep DOCX as the ATS/application surface, then switch the impressive version to HTML/PDF/Figma/Canva handoff using `visual-design-tools-workflow.md`. Do not keep adding DOCX complexity until the ATS file becomes fragile.
+
 ## Recommended Template Options
 
 Use one of these local template profiles:
@@ -61,9 +63,9 @@ For `modern-technical` and `executive-compact`:
 
 Canva, Figma, Word templates, and Google Docs templates can be useful for manual polish, but they are not the default generation path because private resume content and profile pictures should not be uploaded automatically. If the user explicitly wants one of these tools:
 
-- Produce sanitized `professional-resume.md`, `ats-resume.docx`, and `designed-resume.html` first.
+- Produce sanitized `professional-resume.md`, `ats-resume.docx`, `designed-resume.html`, and preferably `designed-resume.pdf` first.
 - Ask before uploading or pasting private content into a third-party service.
-- Use the designed HTML or `designed-resume.docx` as the import/copy source.
+- Use the designed HTML/PDF as the visual reference. Use `designed-resume.docx` only when Word editability matters.
 - Keep `ats-resume.docx` as the application file even if a visual Canva/Figma version is created.
 
 ## Quality Gate

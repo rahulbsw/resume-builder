@@ -181,3 +181,22 @@ Expected outputs:
 - `designed-resume.html` remains available for Canva/Figma/manual design import when requested.
 - `docx-render-review.md` documents visual QA or states that LibreOffice/rendering was unavailable.
 - The final response tells the user which file to submit to ATS and which file to use for recruiter/referral sharing.
+
+## Scenario 10: Visual Tool Resume Handoff
+
+Input:
+
+- Goal: improve visual quality beyond DOCX.
+- User feedback: HTML resume looked good, but DOCX did not have the same visual quality.
+- Requested tools: Canva, Figma, or available Codex/Claude visual tooling.
+- Evidence: sanitized professional resume content and optional user-approved profile photo.
+
+Expected outputs:
+
+- `ats-resume.docx` remains the ATS/application file.
+- `designed-resume.html` is treated as the high-fidelity visual source of truth.
+- `designed-resume.pdf` is produced when browser/PDF export tooling is available or requested.
+- `visual-design-review.md` records browser/PDF/Figma/Canva QA status and any limitations.
+- `visual-tool-handoff.md` provides Canva copy blocks, Figma handoff notes, and privacy/upload status.
+- Figma tools are used only when a target Figma file is provided or approved.
+- Canva upload is not automatic; the workflow provides a manual/import handoff unless the user explicitly approves third-party upload.
