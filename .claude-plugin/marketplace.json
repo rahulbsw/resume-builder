@@ -1,0 +1,21 @@
+{
+  "name": "resume-builder",
+  "owner": {
+    "name": "rahulbsw"
+  },
+  "metadata": {
+    "description": "Resume Intelligence plugin marketplace for evidence-backed resumes, visual templates, job matching, and interview prep.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "resume-intelligence",
+      "description": "Build evidence-backed resumes, ATS-safe DOCX files, visual HTML/PDF/Figma/Canva-ready resumes, job match reports, and interview prep.",
+      "version": "0.1.0",
+      "author": {
+        "name": "rahulbsw"
+      },
+      "source": "./plugins/resume-intelligence"
+    }
+  ]
+}

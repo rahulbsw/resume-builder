@@ -1,0 +1,22 @@
+{
+  "name": "resume-intelligence",
+  "displayName": "Resume Intelligence",
+  "version": "0.1.0",
+  "description": "Build evidence-backed resumes, ATS-safe DOCX files, high-quality visual HTML/PDF/Figma/Canva-ready resumes, job match reports, LinkedIn recommendations, and interview prep.",
+  "author": {
+    "name": "rahulbsw"
+  },
+  "homepage": "https://github.com/rahulbsw/resume-builder",
+  "repository": "https://github.com/rahulbsw/resume-builder",
+  "keywords": [
+    "resume",
+    "ats",
+    "linkedin",
+    "job-search",
+    "interview-prep",
+    "figma",
+    "canva",
+    "docx"
+  ],
+  "skills": "./skills/"
+}

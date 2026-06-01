@@ -1,1 +1,13 @@
 .worktrees/
+
+# Local agent/vector state
+.swarm/
+agentdb.rvf
+agentdb.rvf.lock
+ruvector.db
+
+# Generated resume runs and transient render output
+resume-runs/
+plugins/resume-intelligence/resume-runs/
+**/__pycache__/
+*.pyc
