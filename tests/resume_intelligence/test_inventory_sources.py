@@ -61,6 +61,28 @@ class InventorySourcesTest(unittest.TestCase):
             self.assertEqual(by_path["platform/diagram.png"].status, "skipped-binary")
             self.assertEqual(by_path["platform/unknown.custom"].status, "skipped-unsupported-format")
 
+    def test_inventory_reports_in_root_symlink_path_for_external_target(self):
+        module = load_inventory_module()
+
+        with tempfile.TemporaryDirectory() as tmp:
+            base = Path(tmp)
+            root = base / "approved"
+            root.mkdir()
+            outside_file = base / "outside.md"
+            outside_file.write_text("external evidence", encoding="utf-8")
+            link = root / "linked.md"
+            try:
+                link.symlink_to(outside_file)
+            except (NotImplementedError, OSError) as exc:
+                self.skipTest(f"symlink creation is not supported: {exc}")
+
+            rows = module.inventory_root(root)
+            by_path = {row.relative_path: row for row in rows}
+
+            self.assertIn("linked.md", by_path)
+            self.assertNotIn(outside_file.as_posix(), by_path)
+            self.assertEqual(by_path["linked.md"].status, "scanned")
+
     def test_markdown_render_includes_command_and_rows(self):
         module = load_inventory_module()
 

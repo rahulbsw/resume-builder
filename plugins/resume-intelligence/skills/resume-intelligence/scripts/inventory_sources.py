@@ -145,7 +145,7 @@ def inventory_root(root: Path) -> list[InventoryRow]:
         dirnames[:] = sorted(name for name in dirnames if name not in SKIPPED_DIRECTORIES)
         for filename in sorted(filenames):
             path = Path(dirpath) / filename
-            rows.append(classify_file(root, path.resolve()))
+            rows.append(classify_file(root, path))
     return rows
 
 
