@@ -9,6 +9,7 @@ It is designed for profiles where evidence is spread across LinkedIn exports, lo
 - `source-inventory.md`: every approved source, folder, connector scope, skipped file, and scan status.
 - `tool-usage-log.md`: tools, commands, connector calls, searches, and manual inputs used.
 - `evidence.md`: source-backed claims with confidence and disclosure rules.
+- `run-summary.md`: concise audit of sources scanned, tools used, outputs created, quality warnings, sensitive approvals, and missing user answers.
 - `draft-resume.md` and `professional-resume.md`: evidence-backed resume drafts.
 - `detailed-resume.md`: full interview/master resume with timeline, roles, responsibilities, projects, impact, metrics, and missing-info questions.
 - `ats-resume.docx`: clean application resume for ATS/job portals.
@@ -218,6 +219,7 @@ Do not upload private content to third-party tools without asking me first.
 
 - Keep ATS and visual outputs separate. Use `ats-resume.docx` for job portals and `designed-resume.html` or `designed-resume.pdf` for recruiter/referral sharing.
 - Start with evidence. Require `source-inventory.md`, `tool-usage-log.md`, and `evidence.md` before polished resume wording.
+- Keep current agent-guided behavior as the default. Helpers and quality gates improve visibility without blocking normal resume generation.
 - Preserve public and enterprise GitHub as separate source contexts. They often have different identities, credentials, and disclosure rules.
 - Treat enterprise Confluence, Jira, private repositories, customer names, internal URLs, and exact metrics as confidential until explicitly approved.
 - Do not rely on LinkedIn scraping. Use pasted LinkedIn content, exports, public profile notes, or user-provided summaries.
@@ -230,6 +232,7 @@ Do not upload private content to third-party tools without asking me first.
 ## Optimization Tips
 
 - Narrow connector queries by repo, project, space, date range, issue type, or keyword before pulling large histories.
+- Use `scripts/inventory_sources.py` for a deterministic first-pass inventory of a local evidence folder.
 - Keep local evidence folders organized by project or employer. Recursive inventory works best when folders have meaningful names.
 - Convert important PDFs, DOCX files, and exported tickets to text-friendly formats when possible.
 - Keep one run per target role or job posting under `resume-runs/YYYY-MM-DD-<slug>/`.

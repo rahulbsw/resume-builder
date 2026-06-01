@@ -131,3 +131,17 @@ Record:
 - Whether the user requested use in the designed resume.
 - Whether the image should be embedded, linked by local path, or omitted from shared artifacts.
 - Any user-provided cropping or style preference.
+
+## Inventory Helper Contract
+
+The local inventory helper writes first-pass rows with these fields:
+
+- Relative path.
+- Extension.
+- Status.
+- Extraction method.
+- Size in bytes.
+- Modified time.
+- Notes.
+
+Statuses are first-pass coverage statuses. The agent may update `source-inventory.md` after extraction, parsing, duplicate detection, user summaries, or other evidence review changes the status or notes for a source.

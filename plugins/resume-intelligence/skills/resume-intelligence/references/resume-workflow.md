@@ -1,5 +1,9 @@
 # Resume Workflow
 
+## Compatibility Rule
+
+Current resume-generation behavior remains the default. Helpers, schemas, and quality gates assist the agent-guided workflow but do not replace it. Do not block generation unless an output would expose credentials, secrets, private URLs, or unapproved confidential details.
+
 ## Source Inventory and Tool Log
 
 Before writing `evidence.md`, create:
@@ -20,6 +24,16 @@ Classify each local file:
 - Needs user input: likely relevant, but requires context or conversion.
 
 Do not write polished claims from sources that are not represented in the inventory and tool log.
+
+## Optional Source Inventory Helper
+
+For local evidence folders, the deterministic inventory helper can create a first-pass source coverage record:
+
+```bash
+python3 plugins/resume-intelligence/skills/resume-intelligence/scripts/inventory_sources.py <approved-folder> --output resume-runs/<run>/source-inventory.md
+```
+
+Use helper output as source coverage evidence, not as final resume claims. The agent still needs to extract, verify, deduplicate, and contextualize evidence before writing `evidence.md` or resume bullets.
 
 ## Evidence First
 
@@ -117,9 +131,15 @@ Score each job in `job-match-report.md` using transparent criteria:
 
 Use a 0-100 score or a qualitative strong/medium/low match, but show the reasoning. Do not recommend applying to a job solely because a keyword appears in the resume. When a listing is unavailable, expired, or inaccessible, mark it and do not score it as a live opportunity.
 
+## Run Summary
+
+Create `run-summary.md` for substantial runs, especially when multiple sources, connectors, generated artifacts, quality gates, or sensitive approval decisions are involved. It should show source coverage, tools used, outputs created, warning-only quality-gate findings, sensitive details that still need approval, and missing user questions that affect resume accuracy or disclosure.
+
 ## Resume Scorecard
 
 Create `resume-scorecard.md` before final resume wording. Use it as a gate before producing `professional-resume.md`, `targeted-resume.md`, and `designed-resume.html`.
+
+Quality gates are warning-only for normal resume generation. Record unsupported claims, missing evidence, ATS risks, page-length concerns, keyword gaps, and sensitive approval needs, but continue producing requested outputs unless proceeding would expose credentials, secrets, private URLs, or unapproved confidential details.
 
 ### Page-Length Strategy
 

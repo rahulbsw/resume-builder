@@ -22,6 +22,7 @@ Use this skill to convert approved career evidence into a professional resume an
 ## When To Load References
 
 - Read `references/source-model.md` before collecting evidence from more than one source or any GitHub source.
+- Read `references/evidence-schema.md` before creating structured evidence, run summaries, or quality-gate checks.
 - Read `references/privacy-sanitization.md` before writing final resume, cover letter, or LinkedIn text from enterprise or private sources.
 - Read `references/resume-workflow.md` before producing the evidence log, resume files, cover letter, or LinkedIn recommendations.
 - Read `references/docx-template-workflow.md` before producing DOCX, Word, Google Docs-targeted, PDF-export, Canva-ready, Figma-ready, or visually polished resume artifacts.
@@ -108,6 +109,7 @@ Use these filenames when the corresponding output is requested:
 - `source-inventory.md`
 - `tool-usage-log.md`
 - `evidence.md`
+- `run-summary.md`
 - `draft-resume.md`
 - `detailed-resume.md`
 - `resume-scorecard.md`
@@ -145,6 +147,7 @@ Use the templates in `assets/templates/` as structure, not as rigid wording.
 11. If job search is requested, search current public job sources and create `job-match-report.md` with match scoring and citations.
 12. If interview preparation is requested, create `project-interview-briefs.md`, `technical-stack-interview-guide.md`, and `interview-prep-pack.md`.
 13. Create `linkedin-recommendations.md` with editable profile updates.
+14. Create `run-summary.md` for substantial runs summarizing source coverage, tools used, outputs created, warning-only quality gates, sensitive approval needs, and missing user questions.
 
 ## Final Response
 
