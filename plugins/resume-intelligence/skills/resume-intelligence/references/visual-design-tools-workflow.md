@@ -22,13 +22,28 @@ Do not force the rich visual design into DOCX. DOCX is useful for editability, b
 | Preserve exact design locally | Browser-rendered HTML/PDF | HTML, PDF, PNG screenshot |
 | Need editable Word file | Designed DOCX companion with clear caveats | `designed-resume.docx` |
 
+## Visual Template Selection
+
+Before building an impressive visual artifact, read `visual-template-profiles.md` and create `visual-template-selector.md`.
+
+Record:
+
+- Selected profile: Modern Technical, Executive Compact, Open Source Builder, Enterprise Platform, or AI Automation.
+- Target audience: recruiter, referral, hiring manager, portfolio, or internal review.
+- Why the selected profile fits the user's target role, years of experience, evidence, and disclosure limits.
+- Profile picture status: omitted, user-provided local path, or approved for this artifact.
+- Third-party upload status: not needed, needs user approval, or user approved.
+
+Do not make the visual selector a blocker for normal resume generation. It is a decision record for visual outputs.
+
 ## HTML/PDF First Workflow
 
 1. Build `professional-resume.md` from verified evidence.
-2. Build `designed-resume.html` from the same sanitized content.
-3. Use browser tooling when available to render desktop and print views.
-4. Export or print to `designed-resume.pdf` when requested.
-5. Create `visual-design-review.md` with viewport, print, spacing, clipping, and page-break checks.
+2. Select a visual profile and create `visual-template-selector.md`.
+3. Build `designed-resume.html` from the same sanitized content.
+4. Use browser tooling when available to render desktop and print views.
+5. Export or print to `designed-resume.pdf` when requested.
+6. Create `visual-design-review.md` with viewport, print, spacing, clipping, and page-break checks.
 
 The HTML design should:
 
@@ -84,3 +99,4 @@ Create `visual-design-review.md` and check:
 - The first viewport or first page sells role fit quickly.
 - The design remains professional, not decorative at the cost of clarity.
 - Third-party upload status is explicit: not uploaded, manually imported, or user-approved upload.
+- The selected visual profile is documented in `visual-template-selector.md`.

@@ -22,6 +22,8 @@ Use this structure in the evidence log:
 
 Create a separate source context for each host + identity + credential boundary. Do not merge evidence across GitHub Cloud, GitHub Enterprise, or multiple accounts on the same host unless the user explicitly confirms they are the same professional identity and disclosure rules match.
 
+When private and public sources are both used, create `disclosure-approval-queue.md` for any claim that crosses source boundaries or needs public wording approval. Keep source IDs visible in evidence and review artifacts so final outputs can be audited without exposing credentials or private URLs.
+
 ## GitHub Public
 
 Use `github-public` for open-source or public GitHub Cloud evidence. Public evidence can support visible open-source sections, repository links, project bullets, and community impact.

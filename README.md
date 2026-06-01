@@ -12,17 +12,20 @@ It is designed for profiles where evidence is spread across LinkedIn exports, lo
 - `tool-usage-log.md`: tools, commands, connector calls, searches, and manual inputs used.
 - `evidence.md`: source-backed claims with confidence and disclosure rules.
 - `run-summary.md`: concise audit of sources scanned, tools used, outputs created, quality warnings, sensitive approvals, and missing user answers.
+- `safe-local-mode-checklist.md`: local-only run controls when connectors or uploads should stay disabled.
+- `disclosure-approval-queue.md` and `final-redaction-review.md`: enterprise/private-source approval and final sharing checks.
 - `draft-resume.md` and `professional-resume.md`: evidence-backed resume drafts.
 - `detailed-resume.md`: full interview/master resume with timeline, roles, responsibilities, projects, impact, metrics, and missing-info questions.
+- `career-master-run.md`, `missing-information-loop.md`, and `career-positioning-coach.md`: career strategy, missing facts, and positioning guidance.
 - `ats-resume.docx`: clean application resume for ATS/job portals.
 - `designed-resume.html` and optional `designed-resume.pdf`: high-quality recruiter/referral visual resume.
 - `designed-resume.docx`: optional editable Word companion, not the main visual surface.
 - `resume-scorecard.md`: ATS, recruiter, page-count, keyword, and claim-risk review.
 - `targeted-resume.md`, `cover-letter.md`, and `gap-analysis.md`: job-specific outputs.
 - `job-match-report.md`: job search and match scoring.
-- `project-interview-briefs.md`, `technical-stack-interview-guide.md`, and `interview-prep-pack.md`: interview prep.
+- `project-interview-briefs.md`, `technical-stack-interview-guide.md`, `interview-prep-pack.md`, and `interview-readiness-scorecard.md`: interview prep and coaching.
 - `linkedin-recommendations.md`: editable LinkedIn profile improvements.
-- `visual-design-review.md` and `visual-tool-handoff.md`: Figma/Canva/HTML/PDF design handoff notes.
+- `visual-template-selector.md`, `visual-design-review.md`, and `visual-tool-handoff.md`: Figma/Canva/HTML/PDF design profile and handoff notes.
 
 ## Repository Layout
 
@@ -38,6 +41,7 @@ It is designed for profiles where evidence is spread across LinkedIn exports, lo
 |   |-- skills/resume-intelligence/references/
 |   |-- skills/resume-intelligence/assets/
 |   |-- skills/resume-intelligence/scripts/
+|   |-- skills/resume-intelligence/examples/
 |   `-- validation/dry-run-scenarios.md
 `-- docs/superpowers/
 ```
@@ -73,6 +77,16 @@ codex plugin add resume-intelligence@resume-builder-local
 ```
 
 Start a new Codex thread after reinstalling so new skill metadata and templates are loaded.
+
+### Validate Local Setup
+
+From the repository root:
+
+```bash
+python3 plugins/resume-intelligence/skills/resume-intelligence/scripts/setup_doctor.py .
+```
+
+The setup doctor checks required plugin files and reports optional local tools such as `rg`, `gh`, `codex`, `claude`, `cursor`, `npx`, and `soffice`.
 
 ## Install For Claude Code
 
@@ -213,6 +227,15 @@ Years of experience: 12
 Create ATS DOCX, professional HTML/PDF, LinkedIn recommendations, and interview prep.
 ```
 
+### Safe Local-Only Run
+
+```text
+Use $resume-intelligence in safe local-only mode.
+Use only my LinkedIn export or pasted profile, local project documents under <folder>, and local job posting text.
+Create source inventory, tool usage log, evidence log, ATS resume, visual resume, career positioning coach, interview readiness scorecard, disclosure approval queue, and run summary.
+Do not connect to external tools, browse job boards, or upload content to Canva/Figma unless I approve it later.
+```
+
 ### Job-Specific Resume And Cover Letter
 
 ```text
@@ -232,7 +255,15 @@ Score each job against my resume evidence, years of experience, target technolog
 
 ```text
 Use $resume-intelligence to prepare interview material from my strongest projects.
-Create project deep dives, technical-stack preparation, behavioral stories, system design prompts, and recruiter-screen talking points.
+Create project deep dives, technical-stack preparation, behavioral stories, system design prompts, recruiter-screen talking points, and an interview-readiness scorecard.
+```
+
+### Career And Interview Coach
+
+```text
+Use $resume-intelligence as my career and interview coach.
+Build a career master run, detailed interview resume, missing-information loop, career positioning coach, project briefs, technical-stack guide, interview prep pack, and interview readiness scorecard.
+Use evidence-backed claims only and ask for missing dates, ownership, metrics, scale, and disclosure decisions.
 ```
 
 ### Detailed Interview Resume / Master Timeline
@@ -247,9 +278,18 @@ Do not invent dates, metrics, or ownership. Ask me for anything that is missing 
 
 ```text
 Use $resume-intelligence to create my ATS DOCX plus a high-quality recruiter HTML/PDF resume.
+Use the visual template profile that best fits my target role: modern-technical, executive-compact, open-source-builder, enterprise-platform, or ai-automation.
 Use visual-tool handoff if Canva or Figma would improve the design.
 Do not upload private content to third-party tools without asking me first.
 ```
+
+### Create A Run Folder
+
+```bash
+python3 plugins/resume-intelligence/skills/resume-intelligence/scripts/resume_runner.py "staff platform engineer"
+```
+
+This creates `resume-runs/YYYY-MM-DD-staff-platform-engineer/` and copies the standard Markdown templates for a new run.
 
 ## Best Practices
 
@@ -258,6 +298,8 @@ Do not upload private content to third-party tools without asking me first.
 - Keep current agent-guided behavior as the default. Helpers and quality gates improve visibility without blocking normal resume generation.
 - Preserve public and enterprise GitHub as separate source contexts. They often have different identities, credentials, and disclosure rules.
 - Treat enterprise Confluence, Jira, private repositories, customer names, internal URLs, and exact metrics as confidential until explicitly approved.
+- Run `setup_doctor.py` after cloning or updating when install behavior looks inconsistent.
+- Use `career-master-run.md` and `interview-readiness-scorecard.md` for preparation; use `professional-resume.md` or `ats-resume.docx` for actual applications.
 - Do not rely on LinkedIn scraping. Use pasted LinkedIn content, exports, public profile notes, or user-provided summaries.
 - Prefer high-confidence claims. Mark weak or inferred claims for user confirmation instead of turning them into polished bullets.
 - Use live search only for current job matching. Job postings change quickly.

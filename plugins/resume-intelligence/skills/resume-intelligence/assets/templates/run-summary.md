@@ -34,6 +34,14 @@
 | `source-inventory.md` |  |  |
 | `tool-usage-log.md` |  |  |
 | `evidence.md` |  |  |
+| `safe-local-mode-checklist.md` |  |  |
+| `disclosure-approval-queue.md` |  |  |
+| `final-redaction-review.md` |  |  |
+| `career-master-run.md` |  |  |
+| `missing-information-loop.md` |  |  |
+| `career-positioning-coach.md` |  |  |
+| `visual-template-selector.md` |  |  |
+| `interview-readiness-scorecard.md` |  |  |
 | `run-summary.md` |  |  |
 
 ## Warning-Only Quality Gates
@@ -47,6 +55,9 @@
 | Missing metrics |  |  |
 | Confidentiality and redaction risk |  |  |
 | Recursive source coverage |  |  |
+| Career positioning support |  |  |
+| Interview readiness |  |  |
+| Visual template and upload safety |  |  |
 
 ## Sensitive Details Awaiting Approval
 
@@ -57,6 +68,8 @@
 | Private repository name |  | Sanitize |  |
 | Jira or Confluence identifier |  | Sanitize |  |
 | Exact internal metric |  | Ask before using |  |
+| Profile picture or image metadata |  | Ask before using |  |
+| Low-confidence claim |  | Confirm or exclude |  |
 
 ## Missing Information To Ask User
 

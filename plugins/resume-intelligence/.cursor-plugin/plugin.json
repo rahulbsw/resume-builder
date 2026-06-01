@@ -2,7 +2,7 @@
   "name": "resume-intelligence",
   "displayName": "Resume Intelligence",
   "version": "0.1.0",
-  "description": "Build evidence-backed resumes, detailed interview resumes, ATS-safe DOCX files, high-quality visual HTML/PDF/Figma/Canva-ready resumes, job match reports, LinkedIn recommendations, and interview prep.",
+  "description": "Build evidence-backed resumes, career coaching artifacts, detailed interview resumes, ATS-safe DOCX files, high-quality visual HTML/PDF/Figma/Canva-ready resumes, job match reports, LinkedIn recommendations, interview prep, and redaction reviews.",
   "author": {
     "name": "rahulbsw"
   },
@@ -14,6 +14,8 @@
     "linkedin",
     "job-search",
     "interview-prep",
+    "career-coach",
+    "redaction",
     "figma",
     "canva",
     "docx"

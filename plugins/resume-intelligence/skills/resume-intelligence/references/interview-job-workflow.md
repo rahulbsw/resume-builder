@@ -76,3 +76,20 @@ The final preparation pack should be practical for rehearsing:
 - Questions to ask: role, team, roadmap, engineering practices, success metrics, and interviewer's expectations.
 
 End with a short study plan: immediate fixes, 1-day prep, 1-week prep, and user details needed to strengthen answers.
+
+## Interview Readiness Scorecard
+
+Create `interview-readiness-scorecard.md` when the user asks for a career coach, interview coach, job-specific interview preparation, or readiness scoring.
+
+Score each area as strong, moderate, or needs work:
+
+- Recruiter screen narrative.
+- Resume walk-through.
+- Key project deep dives.
+- Technical stack explanations.
+- System design preparation.
+- Behavioral stories.
+- Job-specific requirement mapping.
+- Redaction and disclosure safety.
+
+For every moderate or weak area, include the next practice action, the evidence to reuse, and the user answer needed to make the answer stronger.

@@ -45,3 +45,19 @@ Pause for user review before final wording when outputs include:
 - Security-sensitive architecture details.
 - Profile pictures or image metadata in shared artifacts.
 - Any low-confidence claim.
+
+## Disclosure Approval Queue
+
+Create `disclosure-approval-queue.md` before final user-facing wording when private or enterprise evidence could appear in outputs. Queue each internal name, customer name, repository name, Jira key, Confluence title, exact private metric, sensitive architecture detail, profile picture, or low-confidence claim.
+
+Each item needs a proposed treatment:
+
+- Use as-is only when explicitly approved.
+- Sanitize with a generic but specific description.
+- Generalize a metric, customer, or system name.
+- Ask before use.
+- Exclude from final outputs.
+
+## Final Redaction Review
+
+Create `final-redaction-review.md` before delivering final outputs when private sources were used. Confirm that credentials, secrets, private URLs, unapproved names, unapproved exact metrics, low-confidence claims, and unapproved profile images are not present in the final resume, cover letter, LinkedIn text, or visual artifacts.

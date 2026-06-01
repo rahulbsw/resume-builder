@@ -274,3 +274,69 @@ Expected outputs:
 - `run-summary.md` lists source contexts, outputs created, warning-only quality gates, missing metrics, and sensitive approval needs.
 - Final polished outputs use high-confidence and approved medium-confidence claims only.
 - Low-confidence or sensitive claims remain questions or sanitized summaries.
+
+## Scenario 15: Career And Interview Coach
+
+Input:
+
+- Goal: career and interview coaching.
+- Years of experience: 14.
+- Target role: staff platform engineer or principal platform engineer.
+- Evidence: detailed resume, scorecard, public GitHub contributions, enterprise summaries, and local architecture notes.
+- Gaps: missing exact ownership for one project, missing scale for one migration, and unconfirmed seniority positioning.
+
+Expected outputs:
+
+- `career-master-run.md` connects evidence coverage, resume strategy, interview strategy, LinkedIn positioning, and job-search direction.
+- `missing-information-loop.md` asks concise high-priority questions for dates, ownership, metrics, scale, and disclosure.
+- `career-positioning-coach.md` recommends best-fit roles, seniority evidence, differentiators, risks, and next moves without inventing claims.
+- `interview-readiness-scorecard.md` scores recruiter screen, resume walk-through, key project deep dives, technical stack explanations, system design, behavioral stories, job-specific mapping, and redaction safety.
+- `project-interview-briefs.md`, `technical-stack-interview-guide.md`, and `interview-prep-pack.md` reuse evidence-backed project and technology claims.
+
+## Scenario 16: Visual Template Profile Selection
+
+Input:
+
+- Goal: impressive visual resume with optional profile picture.
+- Years of experience: 12.
+- Target role: staff platform engineer with AI automation and open-source experience.
+- Evidence: sanitized professional resume, public GitHub links, enterprise summaries, and user-provided profile picture path.
+
+Expected outputs:
+
+- `visual-template-selector.md` selects one profile from modern-technical, executive-compact, open-source-builder, enterprise-platform, or ai-automation.
+- `visual-template-selector.md` records profile-picture approval status and third-party upload status.
+- `designed-resume.html` uses sanitized content and keeps `ats-resume.docx` as the job-portal artifact.
+- `visual-design-review.md` checks first-page role fit, readability, print/PDF page breaks, and profile-picture handling.
+- `visual-tool-handoff.md` states Canva/Figma upload is manual or requires explicit user approval.
+
+## Scenario 17: Safe Local-Only Open-Source Run
+
+Input:
+
+- Goal: create resume and interview prep without external connectors.
+- User approves only local files, pasted LinkedIn export, and local job posting text.
+- GitHub, Jira, Confluence, browser, Figma, Canva, and job-board access are disabled or not approved.
+
+Expected outputs:
+
+- `safe-local-mode-checklist.md` records allowed local sources, disabled external tools, and fallbacks.
+- `setup_doctor.py` can be used to report required files and optional command availability without blocking basic resume generation.
+- `source-inventory.md` and `tool-usage-log.md` record local recursive inventory and disabled connector attempts.
+- `evidence.md`, `professional-resume.md`, `resume-scorecard.md`, and `run-summary.md` are still produced from approved local evidence.
+- Missing connector data is recorded as a limitation, not silently ignored.
+
+## Scenario 18: Enterprise Disclosure And Redaction Audit
+
+Input:
+
+- Goal: targeted resume, cover letter, LinkedIn recommendations, and visual resume using private enterprise evidence.
+- Sources: GitHub Enterprise PR summaries, Jira issues, Confluence pages, and local private design docs.
+- Sensitive items: internal project names, private repository names, Jira keys, Confluence page titles, customer names, exact metrics, and one low-confidence claim.
+
+Expected outputs:
+
+- `disclosure-approval-queue.md` lists every sensitive item, source context, proposed treatment, pending user decision, and output impact.
+- `final-redaction-review.md` checks final outputs for credentials, secrets, private URLs, unapproved names, unapproved metrics, issue keys, page titles, low-confidence claims, and profile-image approval.
+- `professional-resume.md`, `targeted-resume.md`, `cover-letter.md`, `linkedin-recommendations.md`, and `designed-resume.html` use sanitized wording unless the user approved exact details.
+- `run-summary.md` records sensitive approvals still needed and any outputs that are not share-ready.

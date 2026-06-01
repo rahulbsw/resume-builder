@@ -104,6 +104,14 @@ Include:
 
 Ask the user for missing information instead of inventing it. Prioritize questions about dates, ownership, scope, metrics, sensitive details, and outcomes.
 
+## Career Master Run And Coaching
+
+Create `career-master-run.md` when the user wants a comprehensive career rebuild, coaching package, or full preparation system. Use it to connect evidence coverage, resume strategy, interview strategy, LinkedIn positioning, and job-search direction in one place.
+
+Create `missing-information-loop.md` when dates, metrics, ownership, disclosure decisions, or scale are missing. Ask the highest-priority questions first and preserve unanswered questions for future sessions.
+
+Create `career-positioning-coach.md` after `detailed-resume.md` and `resume-scorecard.md` when the user wants stronger positioning or when seniority/target-role alignment needs explanation. Keep the advice evidence-backed and practical: best-fit roles, seniority signals, differentiators, positioning risks, and next actions.
+
 ## Job Posting Match
 
 For each important job requirement, classify:
@@ -244,6 +252,8 @@ Create `interview-prep-pack.md` as the practical study plan:
 - Questions to ask interviewers.
 - Red flags, gaps, and user follow-up questions.
 
+Create `interview-readiness-scorecard.md` when the user asks for an interview coach or when a target job is selected. Score recruiter-screen narrative, resume walk-through, key project deep dives, technical stack explanations, system design preparation, behavioral stories, job-specific requirements, and redaction safety. Every weak score should include the next practice action and the evidence or user answer needed.
+
 ## Designed Resume
 
 Create `designed-resume.html` when the user requests a professional template, visual resume, Canva/Figma-ready layout, printable design, PDF export, recruiter-facing design, or profile-picture support.
@@ -252,7 +262,7 @@ Use the sanitized content from `professional-resume.md`. Keep the Markdown resum
 
 Create `ats-resume.docx` and `designed-resume.docx` when the user requests DOCX, Word, Google Docs, PDF export, or a more impressive resume template. Before creating DOCX files, read `docx-template-workflow.md`.
 
-When the user wants the design to be impressive, read `visual-design-tools-workflow.md` and prefer HTML/PDF/Figma for the visual artifact. DOCX can be polished, but it should not be treated as the highest-fidelity design surface.
+When the user wants the design to be impressive, read `visual-design-tools-workflow.md` and `visual-template-profiles.md`, create `visual-template-selector.md`, and prefer HTML/PDF/Figma for the visual artifact. DOCX can be polished, but it should not be treated as the highest-fidelity design surface.
 
 The designed resume should:
 
